@@ -3,7 +3,6 @@ layout: post
 title: First Post
 description: >
   "복사 && 붙여넣기"
-sitemap: false
 ---
 
 
@@ -12,9 +11,7 @@ sitemap: false
 
 
 [^1]: 
-      첫번 째
+      첫번째
 
 [^2]:
-      두번 째
-
-
+      두번째
