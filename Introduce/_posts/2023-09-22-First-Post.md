@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: blog
 title:  "First Post in Jekyll!!!"
 description: >
   "사이드바에 있는 멋있는 설명"
