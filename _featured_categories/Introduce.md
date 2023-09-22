@@ -10,7 +10,7 @@ slug: introduce
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
- "github.io의 여러 기능들을 익혀보자."
+ "github.io의 여러 기능들을 익혀보자!"
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
