@@ -1,10 +1,9 @@
 ---
 layout: blog
-title: Posts
+title:  "Posts"
 description: >
-  This is the `list` layout for showing blog posts, which shows just the title and groups them by year of publication.
-  Check out the `blog` layout for comparison.
-grouped: true
+  "사이드바에 있는 멋있는 설명"
+date:   2023-09-22 16:44:28 +0900
+tags: [<introduce>]
 ---
-
 글 한번 써봅니다!!
