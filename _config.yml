@@ -52,7 +52,7 @@ menu:
   - title:             Example
     url:               /example/
   - title:             Introduce
-    url:               ./introduce/
+    url:               /introduce/
   - title:             Documentation
     url:               /docs/
   - title:             About
