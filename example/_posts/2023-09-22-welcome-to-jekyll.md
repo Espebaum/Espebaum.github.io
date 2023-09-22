@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Welcome to Jekyll!!
-image: 
-  path: /assets/img/blog/jeremy-bishop@0,5x.jpg
 description: >
   welcome to jekyll
 sitemap: false
