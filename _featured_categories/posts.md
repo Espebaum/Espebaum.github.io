@@ -10,7 +10,7 @@ slug: posts
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
- "포스트한 모든 글들"
+ "예시와 연습"
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
