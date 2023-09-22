@@ -49,9 +49,9 @@ author:
 
 # Add links to the sidebar.
 # 디렉토리와 메뉴를 제대로 링크시키려면, .md에 있는 slug를 url에 적어야 한다!
+  # - title:             Example
+  #   url:               /example/
 menu:
-  - title:             Example
-    url:               /example/
   - title:             Introduce
     url:               /introduce/
   - title:             Documentation
