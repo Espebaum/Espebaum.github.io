@@ -54,6 +54,8 @@ author:
 menu:
   - title:             Introduce
     url:               /introduce/
+  - title:             Libft
+    url:               /libft/
   - title:             Documentation
     url:               /docs/
   - title:             About

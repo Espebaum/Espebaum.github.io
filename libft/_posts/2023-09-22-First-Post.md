@@ -1,0 +1,8 @@
+---
+layout: post
+title: "ft_atoi"
+description: >
+  "atoi에 대하여"
+---
+
+### ft_atoi
