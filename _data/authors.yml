@@ -7,7 +7,7 @@ author1:
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
-  about:             | 
+  about:             |
     "독일어보다는 C언어
 
     _data/author.yml을 열어서 이 텍스트를 바꿀 수가 있어요."
