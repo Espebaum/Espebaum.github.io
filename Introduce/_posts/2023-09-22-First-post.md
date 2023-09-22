@@ -1,5 +1,4 @@
 ---
-layout: post
 title: First Post
 description: >
   "복사 && 붙여넣기"
