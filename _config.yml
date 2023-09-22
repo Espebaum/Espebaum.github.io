@@ -52,8 +52,8 @@ author:
   # - title:             Example
   #   url:               /example/
 menu:
-  - title:             Introduce
-    url:               /introduce/
+  - title:             Posts
+    url:               /posts/
   - title:             Libft
     url:               /libft/
   - title:             Documentation
