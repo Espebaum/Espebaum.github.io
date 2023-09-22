@@ -1,8 +1,10 @@
 ---
 layout: post
-title: First Post
+title: 제목입니다.
 description: >
-  "복사 && 붙여넣기"
+  Version 9 is the most complete version of Hydejack yet.
+  Modernized design, big headlines, and big new features.
+sitemap: false
 ---
 
 
