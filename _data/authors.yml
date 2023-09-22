@@ -7,12 +7,11 @@ author1:
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
-  about:             |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    
-    Open `_data/authors.yml` to edit this text.
+  about:             | 
+    "독일어보다는 C언어
+
+    '_data/author.yml'을 열어서 이 텍스트를 바꿀 수가 있어요."
+
 
   # This photo will be used in the about section
   picture:
