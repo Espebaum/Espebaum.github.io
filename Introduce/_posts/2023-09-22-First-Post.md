@@ -1,8 +1,9 @@
 ---
-layout: blog
-title:  "First Post in Jekyll!!!"
+layout: list
+title: Posts
 description: >
-  "사이드바에 있는 멋있는 설명"
+  This is the `list` layout for showing blog posts, which shows just the title and groups them by year of publication.
+  Check out the `blog` layout for comparison.
 grouped: true
 ---
 글 한번 써봅니다!!
