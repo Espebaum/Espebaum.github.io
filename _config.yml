@@ -51,6 +51,8 @@ author:
 menu:
   - title:             Example
     url:               /example/
+  - title:             Libft
+    url:               /libft/
   - title:             Documentation
     url:               /docs/
   - title:             About
