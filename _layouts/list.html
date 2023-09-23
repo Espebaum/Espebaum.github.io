@@ -25,7 +25,7 @@ layout: page
 {% assign list_group_by = date_formats.list_group_by | default:"%Y"    %}
 {% assign list_entry    = date_formats.list_entry    | default:"%d %b" %}
 
-<!-- {% assign prev_date = 0 %}
+{% assign prev_date = 0 %}
 {% if page.no_groups %}<ul class="related-posts">{% endif %}
 {% for post in posts %}
   {% assign current_date = post.date | date:list_group_by %}
@@ -37,4 +37,4 @@ layout: page
   {% endif %}{% endunless %}
   {% include_cached components/post-list-item.html post=post format=list_entry %}
   {% if forloop.last %}</ul>{% endif %}
-{% endfor %} -->
+{% endfor %}
