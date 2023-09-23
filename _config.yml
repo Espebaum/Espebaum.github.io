@@ -381,9 +381,9 @@ plugins:
 #   publisher:           <id>
 #   admins:              <id>
 
-Used on index and about sites
+# Used on index and about sites
 social:
-  name:                <firstname> <lastname>
+  name:                gyopark
   links:
     - https://twitter.com/<username>
     - https://github.com/Espebaum
