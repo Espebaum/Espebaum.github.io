@@ -21,18 +21,18 @@ lang:                  ko-KR, en-US
 
 # The title of your blog. Used in the sidebar and the browser tab.
 title:                 나는 gyopark
+timezone:              Asia/Seoul
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  Hydejack is a boutique Jekyll theme for hackers, nerds, and academics,
-  with a focus on personal sites that are meant to impress.
+  쉬운 건 없다.
 
 # A shorter description for the sidebar.
 tagline:               42서울에서 Cadet을 하고 있어요
 
 # A list of keywords for your blog
-keywords:              []
+keywords:              ["Programming", "C++", "Jekyll"]
 
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
@@ -42,8 +42,11 @@ logo:                  /assets/img/logo.png
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                <firstname> <lastname>
-  email:               <mail@domain.tld>
+  name:                gyopark
+  email:               vocops5000@gmail.com
+  social:
+    github:            Espebaum
+    email:             vocops5000@gmail.com
   # # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
@@ -361,10 +364,10 @@ plugins:
 #   admins:              <id>
 
 # Used on index and about sites
-social:
-  name:                gyopark
-  links:
-    - https://github.com/Espebaum
+# social:
+#   name:                gyopark
+#   links:
+#     - https://github.com/Espebaum
 
 
 # Plugin Configs
