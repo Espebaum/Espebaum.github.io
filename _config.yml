@@ -185,7 +185,7 @@ comments:
   provider:            utterances
 
 utterances:
-  repo:                "Espebaum/blog-comments"
+  repo:                "Espebaum/Espebaum.github.io"
   issue-term:          "pathname"
   label:               "Comments"
   theme:               "github-light"
