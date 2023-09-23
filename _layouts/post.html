@@ -35,7 +35,7 @@ layout: base
            async>
   </script>
 
-{% assign addons = page.addons | default:site.hydejack.post_addons %}
+<!-- {% assign addons = page.addons | default:site.hydejack.post_addons %}
 {% unless addons %}{% assign addons = "about,newsletter,related,random" | split:"," %}{% endunless %}
 {% for addon in addons %}
   {% case addon %}
@@ -51,4 +51,4 @@ layout: base
     {% include body/comments.html %}
   {% else %}
   {% endcase %}
-{% endfor %}
+{% endfor %} -->

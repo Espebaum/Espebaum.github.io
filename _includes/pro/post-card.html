@@ -1,4 +1,4 @@
-<!-- {% assign post = include.post %}
+{% assign post = include.post %}
 
 {% assign vars = site.data.variables %}
 {% assign break_point_1 = vars.break_point_1 | default:42 %}
@@ -42,4 +42,4 @@
   {% endif %}
   {% assign text = site.data.strings.continue_reading | default:"Continue reading <!--post_title-->" %}
   <a class="fill-card no-hover" href="{{ post.url | relative_url }}" tabindex="-1"><span class="sr-only">{{ text | replace:"<!--post_title-->", post.title }}</span></a>
-</article> -->
+</article>
