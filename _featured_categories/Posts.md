@@ -11,8 +11,7 @@ slug: posts
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-  This is a featured category, which have their own page.
-  Check out `_featured_tags/example.md` to learn how to create your own.
+  와 깃허브 블로그 진짜 어렵네요
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
