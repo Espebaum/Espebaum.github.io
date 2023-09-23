@@ -81,6 +81,24 @@ permalink:             /:categories/:year-:month-:day-:title/
 paginate:              10
 paginate_path:         /:num/
 
+# 아래는 내 github repository와 연동된 blog-comments의 javascript이다.
+# <script src="https://utteranc.es/client.js"
+#         repo="Espebaum/blog_comments"
+#         issue-term="pathname"
+#         label="Comments"
+#         theme="github-light"
+#         crossorigin="anonymous"
+#         async>
+# </script>
+
+comments:
+  provider:            utterances
+
+utterances:
+  repo:                "Espebaum/blog_comments"
+  issue-term:          "pathname"
+  label:               "Comments"
+  theme:               "github-light"
 
 # Theme
 # ---------------------------------------------------------------------------------------
@@ -426,3 +444,4 @@ jekyll_compose:
       links:
         - title: Project Link
           url: https://espebaum.github.io
+
