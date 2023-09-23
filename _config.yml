@@ -53,9 +53,9 @@ author:
 # Add links to the sidebar.
 menu:
   - title:             Posts
-    url:               /posts/
+    url:               /_post/posts/
   - title:             Libft
-    url:               /libft/
+    url:               /_post/libft/
   - title:             Documentation
     url:               /docs/
   - title:             About
