@@ -8,7 +8,7 @@ ruby와 gem 때문에 애를 먹었다.
 뭔가 버전이 안맞는지 계속 버벅거렸는데
 
 ~~~bash
-gem update --system
+rbenv global system
 ~~~
 
-한번 해주니까 말끔하게 해결됐다. 아직도 뭐가 뭔지 어렵다...
+한번 해주니까 말끔하게 해결됐다. macOS에서는 ruby를 설치하려고 rbenv를 설치한건데, wls2에서는 ruby를 system 수준에서 사용했다. 차이점이 뭐였던걸까? 아직도 갈 길이 멀어보인다...
