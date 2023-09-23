@@ -13,7 +13,9 @@ category: libft
 
 [2. MAN CALLOC](#2-man-calloc)
 
-[3. MAN MEMSET](#)
+[3. MAN MEMSET](#3-man-memset)
+
+[4. MEMSET 주의점](#4-memset-주의점)
 
 > **calloc** --- Memory Allocation
 
