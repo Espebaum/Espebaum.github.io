@@ -10,6 +10,7 @@ category: libft
 ### <목차>
 {:.lead}
 [1. MY CODES](#1-my-codes)
+
 [2. 이야깃거리](#2-이야깃거리)
 
 ## (1) MY CODES
