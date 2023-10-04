@@ -157,7 +157,7 @@ output:
 	main.c:9:27: warning: implicit conversion from 'double' to 'int' changes value from
 		3.1 to 3 [-Wliteral-conversion]
 		printf("%d\n", square(3.1));
-					~~~~~~ ^~~
+				~~~~~~ ^~~
 	1 warning generated.
 ~~~
 - square는 매개변수 int형에 대해서만 정의되어 있고, double에 대해서는 정의되어 있지 않기 때문에 double이 int로 캐스팅되는 과정에서 값의 손실이 일어나게 된다. 이걸 막기 위해서는 double에 대한 square를 오버로딩하거나 템플릿을 사용해야 한다. 이 과정에서 오히려 코드가 길어질 수 있다.
