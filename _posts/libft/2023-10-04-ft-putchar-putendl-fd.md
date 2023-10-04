@@ -10,7 +10,9 @@ category: libft
 ### <목차>
 {:.lead}
 [1. MY CODES](#1-my-codes)
+
 [2. MAN PUTCHAR](#2-man-putchar)
+
 [3. 이야깃거리](#3-이야깃거리)
 
 > putchar --- output a character or word to a stream
