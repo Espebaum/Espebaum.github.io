@@ -13,6 +13,8 @@ category: libft
 
 [2. 함수 포인터](#2-함수-포인터)
 
+[3. 콜백 함수](#3-콜백-함수callback-function)
+
 > striteri -- 함수 포인터를 사용하여 문자열에 함수를 적용해보자
 
 ## (1) MY CODES
@@ -189,9 +191,10 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 int	main()
 {
 	int		i = 0;
-	char	*s = (char*)malloc(sizeof(char) * 2);
-	s[0] = 'a';
-	s[1] = '\0';
+	char	s[] = "apple";
+	// char	*s = (char*)malloc(sizeof(char) * 2);
+	// s[0] = 'a';
+	// s[1] = '\0';
 
 	ft_striteri(s, NULL); // 콜백 함수를 사용하지 않고 호출
 	printf("%s\n", s);
