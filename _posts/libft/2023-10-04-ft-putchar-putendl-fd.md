@@ -91,7 +91,8 @@ RETURN VALUES
 #define square(X) X*X
 #define square2(X) ((X)*(X))
 
-int main() {
+int main() 
+{
     int x = 1;
     printf("%d %d\n", square(x + 3), square2(x + 3));
 	return 0;
