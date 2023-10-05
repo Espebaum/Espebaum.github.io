@@ -128,7 +128,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 ~~~c
 #include "libft.h"
 
-void	uppercase(unsigned int idx, char *c) 
+void	MyUpperCase(unsigned int idx, char *c) 
 {
     if (c != NULL && *c >= 'a' && *c <= 'z') 
         *c = *c - 'a' + 'A'; // 소문자를 대문자로 변환
@@ -212,4 +212,4 @@ output:
 	index 0: A
 ~~~
 
-- 위의 `ft_striteri()`의 출력은 차례대로 함수 uppercase를 가리키고 있는 함수 포인터 f의 값, 그리고 uppercase가 적용된 문자열 'a'의 출력값, 그리고 함수 print_char를 가리키는 함수 포인터 f의 값, 그리고 print_char의 출력값이다. 이런 식으로 콜백을 사용하면 라이브러리에 국한되지 않고 다양한 행동 양식을 정해줄 수 있다.
+- 위의 `ft_striteri()`의 출력은 차례대로 함수 MyUpperCase를 가리키고 있는 함수 포인터 f의 값, 그리고 MyUpperCase가 적용된 문자열 'a'의 출력값, 그리고 함수 print_char를 가리키는 함수 포인터 f의 값, 그리고 print_char의 출력값이다. 이런 식으로 콜백을 사용하면 라이브러리에 국한되지 않고 다양한 행동 양식을 정해줄 수 있다.
