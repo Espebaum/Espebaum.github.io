@@ -124,6 +124,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 > [C언어 - callback 함수(콜백 함수)](https://blog-of-gon.tistory.com/226)
 
 - 예를 들어 내가 배포한 라이브러리 libft에, `void ft_striteri(char *s, void(*f)(unsigned int, char*))`를 아래와 같이 작성했다고 하자.
+
 ~~~c
 #include "libft.h"
 
