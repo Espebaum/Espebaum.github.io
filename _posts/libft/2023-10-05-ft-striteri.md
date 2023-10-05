@@ -11,6 +11,8 @@ category: libft
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
+[2. 함수 포인터](#2-함수-포인터)
+
 > striteri -- 함수 포인터를 사용하여 문자열에 함수를 적용해보자
 
 ## (1) MY CODES
@@ -89,6 +91,7 @@ int main()
 	int (*operation)(int, int);
 ~~~
 - 여느 변수와 같이 맨 앞의 int는 반환형이다. (*operation)은 함수 포인터의 이름이다. 마음대로 지어도 된다. (int, int)는 함수가 받는 매개변수를 의미한다. operation이 가리키는 함수는 한 쌍의 int를 매개변수로 받는다. 괄호가 비어있으면 매개변수가 없다는 것을 의미한다(void).
+
 ~~~c
 	void (*func)();
 ~~~
@@ -106,4 +109,103 @@ int add(int a, int b) { return a + b; }
 ...
 ~~~
 - 이렇게 보니 그냥 보통 변수랑 사용 방법이 다른게 거의 없다. 함수이기 때문에 결과값은 int 변수에 담을 수 있다는 점이 눈에 띈다. 이렇게 줄줄 써놓고 나니, 왜 함수 포인터를 사용하는지에 대한 의문이 생겨난다. 
-- **함수에 주소가 존재하고, 함수를 매개변수로 담을 수 있다는 사실**
+- **함수에 주소가 존재하고, 함수를 매개변수로 담을 수 있다는 사실**은 적어도 내가 생각한 것보다는 훨씬 의미가 있는 요인이었다. 함수 포인터의 대표적인 쓰임새라고 할 수 있는 **콜백 함수**에 대해 알아보자. 콜백 함수는 라이브러리 확장을 통해 프로그램의 유연성을 보장할 때 사용할 수 있는 강력한 도구로 알려져 있다.
+
+## (3) 콜백 함수(CallBack Function)
+- 말하자면 C 언어의 콜백 함수는 **함수 포인터가 매개변수로 들어가는** 함수이다. 즉
+~~~c
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+~~~
+- 이 녀석도 콜백 함수로 볼 수 있다.
+- 위에서 콜백 함수로 라이브러리를 확장하고 프로그램의 유연성을 보장할 수 있다고 말했는데, 어떻게 그게 가능한 것일까? 아래 링크를 참조하면 이해가 빠를 것 같다.
+
+> [C언어 - callback 함수(콜백 함수)](https://blog-of-gon.tistory.com/226)
+
+- 예를 들어 내가 배포한 라이브러리 libft에, `void ft_striteri(char *s, void(*f)(unsigned int, char*))`를 아래와 같이 작성했다고 하자.
+~~~c
+#include "libft.h"
+
+void	uppercase(unsigned int idx, char *c) 
+{
+    if (c != NULL && *c >= 'a' && *c <= 'z') 
+        *c = *c - 'a' + 'A'; // 소문자를 대문자로 변환
+}
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i = 0;
+
+	if (!f)
+		f = uppercase;
+
+	if (!f)
+	{
+		while (s[i])
+		{
+			f(i, &s[i]);
+			i++;
+		}	
+	}
+}
+~~~
+
+- 나의 라이브러리를 사용하는 사람은 내가 기본적으로 지정한 ft_striteri를 그대로 따를 수도 있고, 자신이 따로 정의한 함수를 매개변수로 보내 uppercase 이외의 다른 작업을 하도록 할 수 있다. 사용자가 필요로 한다면 자신의 입맛대로 라이브러리를 확장시킬 수 있기 때문에 프로그램의 유연성을 보장할 수 있다. 이것이 콜백의 개념이라고 한다.
+
+- 대문자로 바꾸는 것이 아니라, 인덱스를 출력하고자 한다면?
+
+~~~c
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+void	print_char(unsigned int idx, char *s) 
+{
+    printf("index %u: %c\n", idx, *s);
+}
+
+void	MyUpperCase(unsigned int idx, char *s)
+{
+    if (s != NULL)
+		if (*s >= 'a' && *s <= 'z')
+			*s -= 'a' - 'A'; // 소문자를 대문자로 변환
+}
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i = 0;
+
+	if (!f)
+	{
+		f = MyUpperCase;
+	}
+	printf("%p\n", f);
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}
+
+int	main()
+{
+	int		i = 0;
+	char	*s = (char*)malloc(sizeof(char) * 2);
+	s[0] = 'a';
+	s[1] = '\0';
+
+	ft_striteri(s, NULL); // 콜백 함수를 사용하지 않고 호출
+	printf("%s\n", s);
+	ft_striteri(s, print_char); // 콜백 함수를 사용하여 호출
+	free(s);
+	return 0;
+}
+~~~
+~~~plain
+output:
+	0x101a9de00
+	A
+	0x101a9ddd0
+	index 0: A
+~~~
+
+- 위의 `ft_striteri()`의 출력은 차례대로 함수 uppercase를 가리키고 있는 함수 포인터 f의 값, 그리고 uppercase가 적용된 문자열 'a'의 출력값, 그리고 함수 print_char를 가리키는 함수 포인터 f의 값, 그리고 print_char의 출력값이다. 이런 식으로 콜백을 사용하면 라이브러리에 국한되지 않고 다양한 행동 양식을 정해줄 수 있다.
