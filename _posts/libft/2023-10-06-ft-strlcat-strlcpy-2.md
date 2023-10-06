@@ -20,7 +20,7 @@ category: libft
 ~~~c
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
 	char	*c;
 	size_t	cnt;
@@ -32,9 +32,9 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		c++;
 		cnt++;
 	}
-	if (size)
+	if (dstsize)
 	{
-		while (*src && --size)
+		while (*src && --dstsize)
 		{
 			*dest = *src;
 			src++;
@@ -45,6 +45,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (cnt);
 }
 ~~~
+
 - strlcat, strlcpy는 매개변수를 받아 문자열을 복사하거나 연결하는 함수이다. 안전하지 못한 strncpy, strncat를 대체하기 위해 설계되었다.
 
 ## (2) MAN STRLCAT & STRLCPY
@@ -97,24 +98,44 @@ RETURN VALUES
 - 대충 살펴봐도 개빡센 메뉴얼이다. 정리해보자면...
 
 ### * strlcpy(char *dst, const char *src, size_t dstsize) 개요
+1.  `strlcpy()`는 src에서 dst로 dstsize - 1개의 문자를 복사하고 dstsize가 0이 아니라면 dst에 NUL을 추가한 후, 복사하고자 했던 src의 길이를 반환한다. dstsize가 0이라면 아무런 행동도 하지 않고 복사하고자 했던 src의 길이를 반환한다. 	dstsize는 src의 몇 글자를 dst에 복사할 것인지를 의미하는데, 이것이 0이라는 것은 복사가 이루어지지 않는다는 것을 의미한다.
 
+1.  마찬가지로 src와 dst 문자열이 겹치는 경우 동작은 정의되지 않는다.
 
+1.  `strlcat()`과 마찬가지로 **`strlcat()` 함수도 생성하려고 시도한 문자열의 총 길이를 반환한다**. 이것은 strlcpy()의 경우 src의 길이를 의미하고, strlcat()의 경우 dst의 초기 길이와 src 길이의 합계를 의미한다. 
 
-- 변수를 많이 써서 복잡해보이는데 결국 dst의 끝에서부터 src의 첫 번째 글자를 dstsize만큼 채워넣는데, NUL이 들어갈 하나를 남겨두고 붙이는 과정이다(dstsize - strlen(dst) - 1개). src를 전부 붙여서 src의 인덱스가 NUL이거나 혹은 최종 dst의 길이가 dstsize에 도달하게 되면 멈춘다. 짧은 라인이지만 꽤 난이도가 있지 않나하고 생각한다...
+1.  `strlcat()`과 마찬가지로 dstsize는 `strlcpy()`의 반환값이 아니며, `strlcpy()`의 반환값 src는 dstsize와 다를 수 있다. 이 함수도 	`strlcat()`처럼 dstsize와 반환값의 차이를 이용하여 플래그처럼 사용할 수 있지 않을까하고 생각한다(생각만...).
 
-strlcpy()와 strlcat()은 대상 버퍼의 전체 크기를 가져와 여유가 있다면 NUL-종료를 보장합니다. NUL을 위한 공간은 dstsize에 포함되어야 합니다. strlcpy()는 문자열 src에서 dst로 dstsize - 1개의 문자를 복사하고, dstsize가 0이 아닌 경우 결과에 NUL을 추가합니다.
+### * strlcpy(char *dst, const char *src, size_t dstsize) 코드 개요
 
-strlcat()은 문자열 src을 dst의 끝에 추가합니다. 최대 dstsize - strlen(dst) - 1개의 문자를 추가합니다. 그런 다음 NUL을 추가합니다. dstsize가 0이거나 원래 dst 문자열이 dstsize보다 길었던 경우에만 NUL을 추가하지 않습니다 (실제로 이러한 경우는 발생하지 않아야 합니다. 이것은 dstsize가 잘못되었거나 dst가 올바른 문자열이 아님을 의미합니다).
+~~~c
+	...
+	c = (char *)src;
+	cnt = 0;
+	while (*c)
+	{
+		c++;
+		cnt++;
+	}
+	...
+	return (cnt);
+~~~
+- 여기서 따로 포인터 변수를 만들어서 반환해야할 src의 길이를 구한 후,
 
-src와 dst 문자열이 겹치는 경우 동작은 정의되지 않습니다.
-
-반환 값
-반환 유형 (size_t 대 int) 및 시그널 핸들러 안전성 (일부 시스템에서 snprintf(3)은 완전히 안전하지 않음)에 대한 논쟁을 제외하고 다음 두 가지는 동등합니다:
-
-n = strlcpy(dst, src, len);
-n = snprintf(dst, len, "%s", src);
-
-snprintf(3)과 마찬가지로 strlcpy()와 strlcat() 함수는 생성하려고 시도한 문자열의 총 길이를 반환합니다. strlcpy()의 경우 src의 길이를 의미하고, strlcat()의 경우 dst의 초기 길이와 src의 길이를 의미합니다.
-
-반환 값이 dstsize 이상인 경우 출력 문자열이 자르기되었습니다. 이를 처리하는 것은 호출자의 책임입니다.
-
+~~~c
+	...
+	if (dstsize)
+	{
+		while (*src && --dstsize)
+		{
+			*dest = *src;
+			src++;
+			dest++;
+		}
+		*dest = '\0';
+	}
+	...
+	return (cnt);
+~~~
+- dstsize만큼 복사한다. dstsize가 0이라면 아무런 행위도 하지 않고 반환된다
+- 전위 연산을 사용해서(--dstsize) NUL이 들어갈 자리를 미리 빼주고, 복사가 끝나면 끝까지 밀린 dest 포인터를 역참조해서 NUL을 넣어서 유효한 문자열임을 보장해준다.
