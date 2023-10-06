@@ -10,6 +10,7 @@ category: libft
 ### <목차>
 {:.lead}
 [1. MY CODES](#1-my-codes)
+
 [2. 사용](#2-사용)
 
 > strjoin -- 문자열 두 개를 스근하게 붙여보자

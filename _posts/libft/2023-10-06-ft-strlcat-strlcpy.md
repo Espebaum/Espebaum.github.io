@@ -11,6 +11,7 @@ category: libft
 ### <목차>
 {:.lead}
 [1. MY CODES](#1-my-codes)
+
 [2. MAN STRLCAT](#2-man-strlcat)
 
 > strlcpy, strlcat -- size-bounded string copying and concatenation
@@ -80,57 +81,45 @@ SYNOPSIS
 		strlcat(char * restrict dst, const char * restrict src, size_t dstsize);
 
 DESCRIPTION
-	The strlcpy() and strlcat() functions copy and
-	concatenate strings with the same input parameters
-	and output result as snprintf(3).  They are
-	designed to be safer, more consistent, and less
-	error prone replacements for the easily misused
+	The strlcpy() and strlcat() functions copy and concatenate strings with the 
+	same input parameters and output result as snprintf(3). They are designed to be 
+	safer, more consistent, and less error prone replacements for the easily misused
 	functions strncpy(3) and strncat(3).
 
-	strlcpy() and strlcat() take the full size of the
-	destination buffer and guarantee NUL-termination
-	if there is room.  Note that room for the NUL
-	should be included in dstsize.
+	strlcpy() and strlcat() take the full size of the destination buffer and guarantee 
+	NUL-termination if there is room. Note that room for the NUL should be included 
+	in dstsize.
 
-	strlcpy() copies up to dstsize - 1 characters from
-	the string src to dst, NUL-terminating the result
-	if dstsize is not 0.
+	strlcpy() copies up to dstsize - 1 characters from the string src to dst, 
+	NUL-terminating the result if dstsize is not 0.
 
-	strlcat() appends string src to the end of dst.
-	strlcat() appends string src to the end of dst.
-	It will append at most dstsize - strlen(dst) - 1
-	characters.  It will then NUL-terminate, unless
-	dstsize is 0 or the original dst string was longer
-	than dstsize (in practice this should not happen
-	as it means that either dstsize is incorrect or
-	that dst is not a proper string).
+	strlcat() appends string src to the end of dst. It will append at most 
+	dstsize - strlen(dst) - 1 characters.  It will then NUL-terminate, unless
+	dstsize is 0 or the original dst string was longer than dstsize (in practice this 
+	should not happen as it means that either dstsize is incorrect or that dst is 
+	not a proper string).
 
-	If the src and dst strings overlap, the behavior
-	is undefined.
+	If the src and dst strings overlap, the behavior is undefined.
 
 RETURN VALUES
-	Besides quibbles over the return type (size_t ver-
-	sus int) and signal handler safety (snprintf(3) is
-	not entirely safe on some systems), the following
+	Besides quibbles over the return type (size_t ver-sus int) and signal handler 
+	safety (snprintf(3) is not entirely safe on some systems), the following 
 	two are equivalent:
 
 		n = strlcpy(dst, src, len);
 		n = snprintf(dst, len, "%s", src);
 
-	Like snprintf(3), the strlcpy() and strlcat()
-	functions return the total length of the string
-	they tried to create.  For strlcpy() that means
-	the length of src.  For strlcat() that means the
-	initial length of dst plus the length of src.
+	Like snprintf(3), the strlcpy() and strlcat() functions return the total length
+	of the string they tried to create.  For strlcpy() that means the length of src.
+	For strlcat() that means the initial length of dst plus the length of src.
 
-	If the return value is >= dstsize, the output
-	string has been truncated.  It is the caller's
-	responsibility to handle this.
+	If the return value is >= dstsize, the output string has been truncated.
+	It is the caller's responsibility to handle this.
 ~~~
 
 - 대충 살펴봐도 개빡센 메뉴얼이다. 정리해보자면...
 
-### 1) strlcat(char *dst, const char *src, size_t dstsize) 개요
+### * strlcat(char *dst, const char *src, size_t dstsize) 개요
 1.  strlcat함수는 오용되기 쉬운 함수인 strncat의 안전하고 일관적이며 오류가 적은 대체품으로 설계되었다.
 
 1.  `strlcat(char *dst, const char *src, size_t dstsize)`은 문자열 src를 dst의 끝에 추가한다. 이때 **최대 dstsize - strlen(dst) - 1개**의 문자를 추가한다. 그 후 NUL을 추가한다. NUL을 추가하는 것으로 반환된 문자열이 유효하다는 것을 보장한다.
@@ -151,9 +140,33 @@ RETURN VALUES
 1.  `strlcat()` 함수는 생성하려고 시도한 문자열의 총 길이를 반환한다. `strlcat()`의 경우 dst의 초기 길이와 src의 길이를 의미한다. 반환 값(dstlen + srclen)이 dstsize 이상인 경우 출력 문자열이 잘릴 수 있는데(truncate), 이것을 처리하는 것은 호출자의 책임이다.
   - 함수가 실행된 후 dst의 len이 dstsize와 다를 수 있다는 것을 나타낸다.
 
-### 2) strlcat() 코드 개요
-- 
+### * strlcat() 코드 개요
+- 솔직히 strlcat이나 strlcpy 모두 짜면서 인터넷을 많이 찾아봤었다. 그 정도로 작성하기 까다로운 코드였던 기억이 있다. 코드를 하나씩 뜯어서 분석해보자.
 
+~~~c
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	p_dst, p_src, dst_len, src_len;
+
+	dst_len = ft_strlen(dst); // 원래 dst의 길이
+	src_len = ft_strlen(src); // 원래 src의 길이
+	p_dst = dst_len; // dst의 길이 인덱스부터 
+	p_src = 0; // src의 0번째 글자를 붙힌다.
+
+	if (dst_len >= dstsize)
+		return (src_len + dstsize); // dstsize가 올바른 값이 아닐 경우의 반환값
+
+	// ... implementation
+
+	return (src_len + dst_len); // dstsize와 달라질 수 있다.
+}
+~~~
+
+- 변수를 4개나 쓴다, 4개 모두가 의미가 있는 것들이다. 반환값을 구하고, src의 첫 번째 문자부터 dst의 끝부터 붙혀나가는 구현 사항을 충족하기 위해 사용된다. 
+
+- 봤다시피 dstsize는 strlcat의 반환값이 아니다.
 
 
 
