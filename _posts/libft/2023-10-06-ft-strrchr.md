@@ -11,6 +11,8 @@ category: libft
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
+[2. MAN STRRCHR](#2-man-strchr)
+
 > strrchr -- locate character in string
 
 ## (1) MY CODES
