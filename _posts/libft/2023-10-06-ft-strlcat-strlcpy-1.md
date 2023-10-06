@@ -6,7 +6,7 @@ description: >
 category: libft
 ---
 
-## ft_strlcat & ft_strlcpy (1)
+## ft_strlcat
 
 ### <목차>
 {:.lead}
