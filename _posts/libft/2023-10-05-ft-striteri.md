@@ -15,7 +15,7 @@ category: libft
 
 [3. 콜백 함수](#3-콜백-함수callback-function)
 
-> striteri -- 함수 포인터를 사용하여 문자열에 함수를 적용해보자
+> ft_striteri -- 함수 포인터를 사용하여 문자열에 함수를 적용해보자
 
 ## (1) MY CODES
 ~~~c

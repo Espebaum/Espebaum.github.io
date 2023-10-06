@@ -13,7 +13,7 @@ category: libft
 
 [2. 사용](#2-사용)
 
-> strjoin -- 문자열 두 개를 스근하게 붙여보자
+> ft_strjoin -- 문자열 두 개를 스근하게 붙여보자
 
 ## (1) MY CODES
 ~~~c
