@@ -122,7 +122,7 @@ RETURN VALUES
 ### * strlcat(char *dst, const char *src, size_t dstsize) 개요
 1.  strlcat함수는 오용되기 쉬운 함수인 strncat의 안전하고 일관적이며 오류가 적은 대체품으로 설계되었다.
 
-1.  `strlcat(char *dst, const char *src, size_t dstsize)`은 문자열 src를 dst의 끝에 추가한다. 이때 **최대 dstsize - strlen(dst) - 1개**의 문자를 추가한다. 그 후 NUL을 추가한다. NUL을 추가하는 것으로 반환된 문자열이 유효하다는 것을 보장한다.
+1.  `strlcat(char *dst, const char *src, size_t dstsize)`은 문자열 src를 dst의 끝에 추가한다. 이때 **최대 dstsize - strlen(dst) - 1개**의 문자를 추가한다. 그 후 NUL을 추가한다. NUL을 추가하는 것으로 반환된 문자열이 유효하다는 것을 보장한다. -1의 의도는 NUL의 자리를 항상 비워주기 위한 것으로 보인다.
 
 1.  그런데 **dstsize가 0이거나 dst 문자열이 dstsize보다 긴 경우**, NUL을 추가하지 않는다. 이러한 경우는 발생하지 않아야 하는데, 이것은 dstsize가 잘못되었거나 dst가 올바른 문자열이 아님을 의미한다
   - 그러니까 **dstsize는 함수가 실행되고, src의 문자열이 합쳐진 dst의 최종적인 길이**일 것으로 생각할 수 있는데, 이게 0이거나 dst의 원래 길이보다 작다면 애초에 말도 안되는 input이라고 볼 수 있다. dst에 문자열을 붙였는데 dstsize가 원래 dst 길이보다 짧거나, 0이라는 것은 이상하다.
@@ -132,7 +132,7 @@ RETURN VALUES
 ~~~c
 ...
 	if (src == dst)
-		return ;
+			return ;
 ...
 ~~~
   - 이 경우 행동이 정의되어 있지 않으므로 이 부분을 코드에 구현할 필요는 없다.
@@ -160,13 +160,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	// ... implementation
 
-	return (src_len + dst_len); // dstsize와 달라질 수 있다.
+	return (src_len + dst_len); 
+	// dstsize가 올바른 값일 때의 반환값, dstsize와 달라질 수 있다.
 }
 ~~~
 
 - 변수를 4개나 쓴다, 4개 모두가 의미가 있는 것들이다. 반환값을 구하고, src의 첫 번째 문자부터 dst의 끝부터 붙혀나가는 구현 사항을 충족하기 위해 사용된다. 
 
-- 봤다시피 dstsize는 strlcat의 반환값이 아니다.
+- 봤다시피 dstsize는 strlcat의 반환값이 아니다. 심지어 strlcat이 반환값은 dstsize가 유효한 값인지, 아닌지에 따라 두 가지로 나뉜다. dstsize가 유효한 값이 아니라면
 
 
 
