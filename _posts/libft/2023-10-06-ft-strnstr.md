@@ -132,7 +132,6 @@ output:
 
 ## (3) 반환값과 예외 처리
 - 이 함수(ft_strnstr)도 값을 반환하고, 예외를 처리하는 것이 꽤 어지러운 함수이기도 하다. man을 보면서 살펴보자.
-
 ### * 반환값
 
 **- If needle is an empty string, haystack is returned**
@@ -140,7 +139,6 @@ output:
 
 **- If needle occurs nowhere in haystack, NULL is returned; otherwise a pointer to the first character of the first occurrence of needle is returned**
   -> 찾으려는 문자열(needle)이 대상 문자열(haystack)에 없으면 NULL을 반환한다; 그렇지 않다면 살펴보았듯이, 대상 문자열내에서 찾으려는 문자열이 처음으로 등장하는 포인터를 반환한다.
-
 ### * 예외 처리
 
 **- 찾으려는 문자열의 길이(needle)가 대상 문자열(haystack)보다 길거나, 탐색하는 길이 len이 needle의 길이보다 짧을 때**
