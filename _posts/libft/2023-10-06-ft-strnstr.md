@@ -135,19 +135,19 @@ output:
 
 ### * 반환값
 
-**If needle is an empty string, haystack is returned**
+**- If needle is an empty string, haystack is returned**
   -> 찾으려는 문자열이 빈 문자열이면, 대상 문자열의 첫 포인터를 그대로 반환한다. 사실상 아무것도 찾지 않는다는 것과 같기 때문에 아무런 작동도 하지 않고 함수를 종료시킨다.
 
-**If needle occurs nowhere in haystack, NULL is returned; otherwise a pointer to the first character of the first occurrence of needle is returned**
+**- If needle occurs nowhere in haystack, NULL is returned; otherwise a pointer to the first character of the first occurrence of needle is returned**
   -> 찾으려는 문자열(needle)이 대상 문자열(haystack)에 없으면 NULL을 반환한다; 그렇지 않다면 살펴보았듯이, 대상 문자열내에서 찾으려는 문자열이 처음으로 등장하는 포인터를 반환한다.
 
 ### * 예외 처리
 
-**찾으려는 문자열의 길이(needle)가 대상 문자열(haystack)보다 길거나, 탐색하는 길이 len이 needle의 길이보다 짧을 때**
+**- 찾으려는 문자열의 길이(needle)가 대상 문자열(haystack)보다 길거나, 탐색하는 길이 len이 needle의 길이보다 짧을 때**
   -> NULL을 반환시킨다.
     - `apple`안에서 `applejuice`를 찾는다고 하면 말이 안된다. 또 `applejuice`에서 `apple`을 찾을 건데, 탐색을 3번만 하면 함수를 백만번을 실행시켜도 apple을 찾을 수가 없을 것이다.
 
-**대상 문자열(haystack)이 NULL이거나, 찾으려는 문자열(needle)이 NULL인 경우**
+**- 대상 문자열(haystack)이 NULL이거나, 찾으려는 문자열(needle)이 NULL인 경우**
 
  (1) haystack이 NULL인 경우
 
