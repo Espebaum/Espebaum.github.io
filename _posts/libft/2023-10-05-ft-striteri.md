@@ -111,7 +111,7 @@ int add(int a, int b) { return a + b; }
 ...
 ~~~
 - 이렇게 보니 그냥 보통 변수랑 사용 방법이 다른게 거의 없다. 함수이기 때문에 결과값은 int 변수에 담을 수 있다는 점이 눈에 띈다. 이렇게 줄줄 써놓고 나니, 왜 함수 포인터를 사용하는지에 대한 의문이 생겨난다. 
-- **함수에 주소가 존재하고, 함수를 매개변수로 담을 수 있다는 사실**은 적어도 내가 생각한 것보다는 훨씬 의미가 있는 요인이었다. 함수 포인터의 대표적인 쓰임새라고 할 수 있는 **콜백 함수**에 대해 알아보자. 콜백 함수는 라이브러리 확장을 통해 프로그램의 유연성을 보장할 때 사용할 수 있는 강력한 도구로 알려져 있다.
+- **함수에 주소가 존재하고, 함수를 매개변수로 담을 수 있다는 사실**은 적어도 내가 생각한 것보다는 훨씬 의미가 있는 요소였다. 함수 포인터의 대표적인 쓰임새로 볼 수 있는 **콜백 함수**에 대해 알아보자. 콜백 함수는 라이브러리 확장을 통해 프로그램의 유연성을 보장할 때 사용할 수 있는 강력한 도구로 알려져 있다.
 
 ## (3) 콜백 함수(CallBack Function)
 - 말하자면 C 언어의 콜백 함수는 **함수 포인터가 매개변수로 들어가는** 함수이다. 즉
@@ -139,7 +139,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	size_t	i = 0;
 
 	if (!f)
-		f = uppercase;
+		f = MyUpperCase;
 
 	if (!f)
 	{
@@ -152,7 +152,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 }
 ~~~
 
-- 나의 라이브러리를 사용하는 사람은 내가 기본적으로 지정한 ft_striteri를 그대로 따를 수도 있고, 자신이 따로 정의한 함수를 매개변수로 보내 uppercase 이외의 다른 작업을 하도록 할 수 있다. 사용자가 필요로 한다면 자신의 입맛대로 라이브러리를 확장시킬 수 있기 때문에 프로그램의 유연성을 보장할 수 있다. 이것이 콜백의 개념이라고 한다.
+- 나의 라이브러리를 사용하는 사람은 내가 기본적으로 지정한 ft_striteri를 그대로 따를 수도 있고, 자신이 따로 정의한 함수를 매개변수로 보내 MyUpperCase 이외의 다른 작업을 하도록 할 수 있다. 사용자가 필요로 한다면 자신의 입맛대로 라이브러리를 확장시킬 수 있기 때문에 프로그램의 유연성을 보장할 수 있다. 이것이 콜백의 개념이라고 한다.
 
 - 대문자로 바꾸는 것이 아니라, 인덱스를 출력하고자 한다면?
 
@@ -161,11 +161,13 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 #include <unistd.h>
 #include <stdlib.h>
 
+// 사용자가 정의한 print char 함수
 void	print_char(unsigned int idx, char *s) 
 {
     printf("index %u: %c\n", idx, *s);
 }
 
+// 물론 MyUpperCase는 라이브러리 사용자에게는 가려져 있을 것이다.
 void	MyUpperCase(unsigned int idx, char *s)
 {
     if (s != NULL)
@@ -192,10 +194,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 int	main()
 {
 	int		i = 0;
-	char	s[] = "apple";
+	char	s[] = "apple"; 
 	// char	*s = (char*)malloc(sizeof(char) * 2);
 	// s[0] = 'a';
 	// s[1] = '\0';
+	// char	*s = "apple" <- 리터럴로 선언시 bus error 발생
 
 	ft_striteri(s, NULL); // 콜백 함수를 사용하지 않고 호출
 	printf("%s\n", s);
