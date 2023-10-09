@@ -10,7 +10,9 @@ category: libft
 ### <목차>
 {:.lead}
 [1. MY CODES](#1-my-codes)
+
 [2. C TRIM](#2-trim-ltrim-rtrim)
+
 [3. ft_strtrim](#3-ft_strtrim)
 
 > ft_strtrim -- 문자열과 구분자를 받아서, 문자열 좌우로 포함된 구분자를 모두 쳐낸 문자열을 할당하여 반환한다.
