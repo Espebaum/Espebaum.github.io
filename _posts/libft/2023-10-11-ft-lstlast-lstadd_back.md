@@ -82,4 +82,15 @@ output :
 
  ![ex3-list](/assets/img/libft/ex3-linked-list.png){:.lead width="800" height="150"}
 
-- `ft_lstadd_front(t_list **lst, t_list *new)`함수는 연결 리스트의 head의 포인터(t_list **lst)와, 새롭게 맨 앞에 둘 노드 new를 매개 변수로 받아 new 노드를 맨 앞으로 옮기고 시작점 head(t_list *lst)를 (t_list *) new로 변경했지만, `ft_lstadd_back(t_list **lst, t_list *new)`는 new 노드를 맨 뒤에 이어 붙인다. 시작 부분은 바뀌지 않았으므로 head를 손댈 필요는 없다. new 노드를 맨 뒤에 붙이는데 사용한 함수가 `ft_lstlast(t_list *lst)`이다. 
+- `ft_lstadd_front(t_list **lst, t_list *new)`함수는 연결 리스트의 head의 포인터(t_list **lst)와, 새롭게 맨 앞에 둘 노드 new를 매개 변수로 받아 new 노드를 맨 앞으로 옮기고 시작점 head(t_list *lst)를 (t_list *) new로 변경했지만, `ft_lstadd_back(t_list **lst, t_list *new)`에서는 new 노드를 연결 리스트의 맨 뒤에 이어 붙인다. `ft_lstnew()`로 노드를 만들 때, 끝은 NULL로 처리되었으므로 따로 끝처리는 할필요가 없고, 또 시작 부분은 바뀌지 않았으므로 head를 손댈 필요도 없다. new 노드를 맨 뒤에 붙이는데 사용한 함수가 `ft_lstlast(t_list *lst)`이다.
+
+- `ft_lstlast(t_list *lst)`는 예의 반복문
+~~~c
+...
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+...
+~~~
+
+- 을 순회하면서 마지막 노드인 lst를 찾아 반환한다. while 문의 조건이 `lst->next`인 이유는 lst->next인 노드가 마지막 노드이기 때문이다. 
