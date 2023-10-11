@@ -67,14 +67,14 @@ void	*Mylower(void	*content)
 {
 	int	idx = 0;
 	int	len = strlen((char*)content);
-	char	*upper = (char*) malloc(len + 1);
+	char	*lower = (char*) malloc(len + 1);
 	while (idx < len)
 	{
-		upper[idx] = tolower(((char *)content)[idx]);
+		lower[idx] = tolower(((char *)content)[idx]);
 		idx++;
 	}
-	upper[idx] = '\0';
-	return upper; 
+	lower[idx] = '\0';
+	return lower; 
 }
 
 void	MyUpper(void	*content)
@@ -153,14 +153,14 @@ void	*Mylower(void	*content)
 {
 	int	idx = 0;
 	int	len = strlen((char*)content);
-	char	*upper = (char*) malloc(len + 1);
+	char	*lower = (char*) malloc(len + 1);
 	while (idx < len)
 	{
-		upper[idx] = tolower(((char *)content)[idx]);
+		lower[idx] = tolower(((char *)content)[idx]);
 		idx++;
 	}
-	upper[idx] = '\0';
-	return upper; 
+	lower[idx] = '\0';
+	return lower; 
 }
 
 void	MyUpper(void	*content)
