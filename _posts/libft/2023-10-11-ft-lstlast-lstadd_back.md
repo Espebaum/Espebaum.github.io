@@ -11,9 +11,9 @@ category: libft
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
-> ft_lstadd_front -- Adds the node ’new’ at the beginning of the list.
+> ft_lstlast -- Returns the last node of the list
 
-> ft_lstsize -- Counts the number of nodes in a list.
+> ft_lstadd_back -- Adds the node ’new’ at the end of the list.
 
 ## (1) MY CODES
 ~~~c
