@@ -11,6 +11,8 @@ category: libft
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
+[2. 사용법](#2-사용법)
+
 > ft_lstdelone -- Takes as a parameter a node and frees the memory of the node’s content using the function ’del’ given as a parameter and free the node. The memory of ’next’ must not be freed.
 
 > ft_lstclear -- Deletes and frees the given node and every successor of that node, using the function ’del’ and free(3). Finally, the pointer to the list must be set to NULL.
