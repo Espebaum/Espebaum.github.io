@@ -57,25 +57,6 @@ int	ft_lstsize(t_list *lst)
 ~~~c
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	new->next = *lst;
-	*lst = new;
-}
-
-int	ft_lstsize(t_list *lst)
-{
-	int	size;
-
-	size = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		size++;
-	}
-	return (size);
-}
-
 int main()
 {
 	t_list*		a;
@@ -86,10 +67,11 @@ int main()
 
 	t_list*		b;
 	b = ft_lstnew("eunrlee");
-	ft_lstadd_front(&a, b);
+
+	ft_lstadd_front(&a, b); // ft_lstadd_front()
 	printf("b->content : %s\n", b->content);
 	printf("a->content : %s\n", b->next->content);
-	printf("size of linked list : %d\n", ft_lstsize(b));
+	printf("size of linked list : %d\n", ft_lstsize(b)); // ft_lstsize()
 	free(b->next);
 	free(b);
 	return 0;
