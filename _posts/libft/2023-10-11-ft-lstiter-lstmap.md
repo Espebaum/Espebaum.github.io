@@ -11,6 +11,8 @@ category: libft
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
+[2. 사용법](#2-사용법)
+
 > ft_lstiter -- Iterates the list ’lst’ and applies the function ’f’ on the content of each node.
 
 > ft_lstmap -- Iterates the list ’lst’ and applies the function ’f’ on the content of each node. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of a node if needed.
