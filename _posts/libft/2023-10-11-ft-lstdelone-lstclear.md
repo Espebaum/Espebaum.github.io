@@ -98,7 +98,7 @@ output :
 
 - 이렇게 해제해도 해제가 되기는 한다. 그러나 보기 좋은 방식은 아니라고 말할 수 있다. 또 content가 동적으로 할당된 메모리일 경우 추가로 b->content에 대한 해제도 필요하다. `ft_lstdelone(t_list *lst, void (*del)(void *))`은 **노드 하나와 그 안의 content를 해제**하고, `ft_lstclear(t_list **lst, void (*del)(void *))`는 **연결 리스트 전체(전체 노드, 그 안의 모든 content들)**를 해제한다. [함수 포인터와 콜백 함수](https://espebaum.github.io/libft/2023-10-05-ft-striteri/)에서 공부한 바 있듯이, 두 함수 모두 **콜백 함수**이다. 살펴보았을 때 함수 포인터에 매개 변수로 들어갈 함수는 **최소한 void 포인터인 b->content에 대한 메모리 해제 라인을 반드시 포함**하고 있어야 할 것이다. 
 
-### 예제 함수 freeWord
+### * 예제 함수 freeWord
 ~~~c
 void	free_name(void	*content)
 {
