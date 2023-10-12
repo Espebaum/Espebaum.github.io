@@ -83,7 +83,7 @@ DESCRIPTION
 
  - **count와 size의 곱이 정수 오버플로우를 일으킬 경우 calloc()은 errno를 설정하고(ENOMEM) NULL을 반환한다.** 
 
-~~~C
+~~~c
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
