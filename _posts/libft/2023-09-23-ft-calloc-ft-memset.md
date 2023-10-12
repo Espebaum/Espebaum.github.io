@@ -75,6 +75,14 @@ DESCRIPTION
  - `calloc()`의 경우, 연속적으로 count만큼의 영역에, size bytes 만큼의 메모리를 할당한다. 할당된 메모리는 0으로 초기화된다.
  - 두 함수의 사용법이 미묘하게 다른데, 본질적으로는 동일하게 사용된다. 아래는 5개짜리 int 배열을 만들고 0으로 초기화하는 간단한 코드이다.
 
+ - **count나 size가 0이면 calloc()은 NULL을 반환하거나, 이후 free()에 무사히 전달할 수 있는 고유한 포인터 값을 반환한다.**
+
+   -> [calloc(3) - Linux man page](https://linux.die.net/man/3/calloc) 
+   
+   " The calloc() function allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory. The memory is set to zero. **If nmemb or size is 0, then calloc() returns either NULL, or a unique pointer value that can later be successfully passed to free().** "
+
+ - count와 size의 곱이 정수 오버플로우를 일으킬 경우 calloc()은 errno를 설정하고(ENOMEM) NULL을 반환한다. 
+
 ~~~C
 #include <stdio.h>
 #include <string.h>
