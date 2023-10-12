@@ -81,7 +81,7 @@ DESCRIPTION
    
    " The calloc() function allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory. The memory is set to zero. **If nmemb or size is 0, then calloc() returns either NULL, or a unique pointer value that can later be successfully passed to free().** "
 
- - count와 size의 곱이 정수 오버플로우를 일으킬 경우 calloc()은 errno를 설정하고(ENOMEM) NULL을 반환한다. 
+ - **count와 size의 곱이 정수 오버플로우를 일으킬 경우 calloc()은 errno를 설정하고(ENOMEM) NULL을 반환한다.** 
 
 ~~~C
 #include <stdio.h>
