@@ -5,7 +5,7 @@ description: >
     "ft_strrchr에 대하여"
 category: libft
 ---
-## ft_strchr
+## ft_strrchr
 
 ### <목차>
 {:.lead}
