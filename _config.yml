@@ -54,11 +54,11 @@ author:
 menu:
   - title:             Posts
     url:               /posts/
-  - title:             42Cursus
+  - title:             42 Cursus
     url:               /42cursus/
     children:
       - title: Libft
-        url: /tag-libft/
+        url: /42cursus/tag-libft/
   - title:             Documentation
     url:               /docs/
   - title:             About
