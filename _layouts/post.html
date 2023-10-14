@@ -25,21 +25,9 @@ layout: base
 {% include_cached components/post.html post=page no_link_title=true no_excerpt=true hide_image=page.hide_image hide_description=page.hide_description %}
 
 {% include components/dingbat.html %}
-  
-  <script src="https://utteranc.es/client.js"        
-            repo="Espebaum/blog-comments"        
-           issue-term="pathname"        
-           label="Comments"        
-           theme="github-light"        
-           crossorigin="anonymous"        
-           async>
-  </script>
 
 {% assign addons = page.addons | default:site.hydejack.post_addons %}
-
-<!-- 이 아래 내용은 똑똑해지면 살펴보자;; -->
-
-<!-- {% unless addons %}{% assign addons = "about,newsletter,related,random" | split:"," %}{% endunless %}
+{% unless addons %}{% assign addons = "about,newsletter,related,random" | split:"," %}{% endunless %}
 {% for addon in addons %}
   {% case addon %}
   {% when 'about' %}
@@ -54,4 +42,4 @@ layout: base
     {% include body/comments.html %}
   {% else %}
   {% endcase %}
-{% endfor %} -->
+{% endfor %}
