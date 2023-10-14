@@ -6,5 +6,5 @@ slug: libft
 category: 42cursus
 sidebar: true
 description: >
-   libft에 대하여
+   0 circle / libft에 관하여
 ---

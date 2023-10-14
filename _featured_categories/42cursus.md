@@ -10,7 +10,6 @@ title: 42Cursus
 slug: 42cursus
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
-
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
 
