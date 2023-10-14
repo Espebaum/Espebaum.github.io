@@ -4,7 +4,7 @@ layout: list
 type: category
 
 # The title of the tag's page.
-title: 42 Cursus
+title: 42Cursus
 
 # The name of the tag, used in a post's front matter (e.g. tags: [<slug>]).
 slug: 42cursus
@@ -17,6 +17,7 @@ description: >
 # no_groups: true
 
 sidebar: true
+order: 2
 
 # Exclude this example category from the sitemap.
 # DON'T USE THIS SETTING IN YOUR CATEGORIES!
