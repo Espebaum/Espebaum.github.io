@@ -2,7 +2,7 @@
 layout: tag-list
 type: tag
 title: Libft
-slug: algorithm
+slug: libft
 category: 42cursus
 sidebar: true
 description: >
