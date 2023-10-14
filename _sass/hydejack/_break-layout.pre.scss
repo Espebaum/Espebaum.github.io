@@ -63,7 +63,7 @@ body.no-break-layout {
 body.no-toc:not(.no-break-layout) {
   pre, table:not(.highlight), .katex-display, .break-layout, mjx-container[jax="CHTML"][display="true"] {
     @media screen and (min-width: $break-point-dynamic) {
-      $x: ($content-width-5 / 2) - ($content-padding * 2);
+      $x: calc($content-width-5 / 2) - ($content-padding * 2);
       width: calc(100% + 50vw - #{$x});
     }
   }
