@@ -54,8 +54,8 @@ author:
 menu:
   - title:             Posts
     url:               /posts/
-  - title:             Libft
-    url:               /libft/
+  - title:             42 Cursus
+    url:               /42cursus/
   - title:             Documentation
     url:               /docs/
   - title:             About
