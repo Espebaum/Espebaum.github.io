@@ -309,7 +309,7 @@ collections:
     output:            true
 
   featured_tags:
-    permalink:         none
+    permalink:         /tag-:name/
     output:            true
 
   projects:
