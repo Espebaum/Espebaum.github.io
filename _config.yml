@@ -51,15 +51,15 @@ author:
   # twitter:             <username>
 
 # Add links to the sidebar.
-menu:
-  - title:             Posts
-    url:               /posts/
-  - title:             42 Cursus
-    url:               /42cursus/
-  - title:             Documentation
-    url:               /docs/
-  - title:             About
-    url:               /about/
+# menu:
+#   - title:             Posts
+#     url:               /posts/
+#   - title:             42 Cursus
+#     url:               /42cursus/
+#   - title:             Documentation
+#     url:               /docs/
+#   - title:             About
+#     url:               /about/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..

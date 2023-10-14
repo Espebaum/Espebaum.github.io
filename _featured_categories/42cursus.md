@@ -10,14 +10,15 @@ title: 42Cursus
 slug: 42cursus
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
-description: >
-  42 Cursus
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
 
 sidebar: true
 order: 2
+
+description: >
+  42서울에서 진행했던 과제들에 관한 기록
 
 # Exclude this example category from the sitemap.
 # DON'T USE THIS SETTING IN YOUR CATEGORIES!
