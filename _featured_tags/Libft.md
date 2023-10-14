@@ -1,23 +1,10 @@
 ---
-# Featured tags need to have either the `list` or `grid` layout (PRO only).
-layout: list
-type: category
-
-# The title of the tag's page.
-title: Libft
-
-# The name of the tag, used in a post's front matter (e.g. tags: [<slug>]).
-slug: libft
-
-# (Optional) Write a short (~150 characters) description of this featured tag.
-description: >
-  libft에 대하여
-
-# (Optional) You can disable grouping posts by date.
-# no_groups: true
-
+layout: tag-list
+type: tag
+title:
+slug: algorithm
+category: 42cursus
 sidebar: true
-
-# Exclude this example category from the sitemap.
-# DON'T USE THIS SETTING IN YOUR CATEGORIES!
+description: >
+   libft에 대하여
 ---

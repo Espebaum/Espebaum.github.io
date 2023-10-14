@@ -3,7 +3,8 @@ layout: post
 title: "ft_strncmp"
 description: >
     "ft_strncmp에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 
 ## ft_strncmp

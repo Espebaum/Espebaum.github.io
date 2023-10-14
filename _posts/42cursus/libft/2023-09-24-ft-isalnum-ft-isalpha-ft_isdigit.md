@@ -3,7 +3,8 @@ layout: post
 title: "ft_isalnum & ft_isalpha & ft_isdigit"
 description: >
     "ft_isalnum, ft_isalpha, ft_isdigit에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_isalnum & ft_isalpha & ft_isdigit
 

@@ -3,7 +3,8 @@ layout: post
 title: "ft_lstiter, ft_lstmap"
 description: >
     "ft_lstiter, ft_lstmap에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## [bouns] ft_lstiter & ft_lstmap
 

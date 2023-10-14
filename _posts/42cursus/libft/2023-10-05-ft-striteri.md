@@ -3,7 +3,8 @@ layout: post
 title: "ft_striteri"
 description: >
     "ft_striteri에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_striteri & Function pointer
 

@@ -3,7 +3,8 @@ layout: post
 title: "ft_strlcat, ft_strlcpy"
 description: >
     "ft_strlcat, ft_strlcpy에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 
 ## ft_strlcat

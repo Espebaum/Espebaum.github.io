@@ -3,7 +3,8 @@ layout: post
 title: "ft_putnbr_fd & ft_putstr_fd"
 description: >
     "ft_putnbr_fd, ft_putstr_fd에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_putnbr_fd & ft_putstr_fd
 

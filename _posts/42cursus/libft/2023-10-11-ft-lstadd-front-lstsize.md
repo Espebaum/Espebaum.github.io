@@ -3,7 +3,8 @@ layout: post
 title: "ft_lstadd_front, ft_lstsize"
 description: >
     "ft_lstadd_front, ft_lstsize에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## [bouns] ft_lstadd_front & ft_lstsize
 

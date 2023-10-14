@@ -3,7 +3,8 @@ layout: post
 title: "ft_calloc & ft_memset"
 description: >
     "ft_calloc, ft_memset에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_calloc & ft_memset
 

@@ -3,7 +3,8 @@ layout: post
 title: "ft_strrchr"
 description: >
     "ft_strrchr에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_strrchr
 

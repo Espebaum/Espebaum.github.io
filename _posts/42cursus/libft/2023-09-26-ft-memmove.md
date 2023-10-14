@@ -3,7 +3,8 @@ layout: post
 title: "ft_memmove"
 description: >
     "ft_memmove에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_memmove
 

@@ -3,7 +3,8 @@ layout: post
 title: "ft_strtrim"
 description: >
     "ft_strtrim에 대하여"
-category: libft
+category: 42cursus
+tags: libft
 ---
 ## ft_strtrim
 
