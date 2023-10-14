@@ -107,6 +107,9 @@ void	free_name(void	*content)
 ~~~
 
 - `ft_lstclear(t_list **lst, void (*del)(void *))`는 반복문을 돌면서 연결 리스트 전체를 해제하고, 마지막으로 시작점인 *lst를 NULL로 정해줌으로써, 연결 리스트가 비어있음을 나타낸다.
+
+- curr을 해제하면, 다시 curr로 접근할 수 없으므로 미리 다음 노드의 주소를 tmp = curr->next로 따준 이후 해제했다.
+
 ~~~c
 	...
 	while (curr)
@@ -118,4 +121,3 @@ void	free_name(void	*content)
 	...
 ~~~
 
-- curr을 해제하면, 다시 curr로 접근할 수 없으므로 미리 다음 노드의 주소를 tmp = curr->next로 따준 이후 해제했다.
