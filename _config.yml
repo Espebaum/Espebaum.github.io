@@ -69,7 +69,7 @@ author:
 legal:
   - title:             LICENSE
     url:               /licenses/
-    title:             DOCS
+  - title:             DOCS
     url:               /docs/
   # - title:             NOTICE
   #   url:               /NOTICE.md
