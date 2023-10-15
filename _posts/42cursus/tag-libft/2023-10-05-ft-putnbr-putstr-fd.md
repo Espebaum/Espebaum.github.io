@@ -9,6 +9,8 @@ tags: libft
 ## ft_putnbr_fd & ft_putstr_fd
 
 ### <목차>
+* MY CODES
+{:toc}
 {:.lead}
 [1. MY CODES](#1-my-codes)
 

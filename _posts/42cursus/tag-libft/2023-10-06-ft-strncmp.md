@@ -10,6 +10,8 @@ tags: libft
 ## ft_strncmp
 
 ### <목차>
+* MY CODES
+{:toc}
 {:.lead}
 [1. MY CODES](#1-my-codes)
 

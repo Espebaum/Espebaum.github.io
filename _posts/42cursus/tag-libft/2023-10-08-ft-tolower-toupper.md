@@ -9,6 +9,8 @@ tags: libft
 ## ft_tolower & ft_toupper
 
 ### <목차>
+* MY CODES
+{:toc}
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
