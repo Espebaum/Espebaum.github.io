@@ -27,7 +27,7 @@ The table below shows what's included in each version:
 |                               | [__Download__][kit] | [__Buy PRO__][buy]{:.gumroad-button data-gumroad-single-product="true"} |
 {:.stretch-table.dl-table}
 
-[^21]: Large screens (> 1664px width) only.
+<!-- [^21]: Large screens (> 1664px width) only. -->
 
 [^22]: Price now permanently reduced by <strong class="discount">30%</strong>! Use the offer code <strong class="code">QR0TW8M</strong> to apply this discount later.
        {:.ppi}
