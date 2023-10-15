@@ -69,6 +69,8 @@ author:
 legal:
   - title:             LICENSE
     url:               /licenses/
+    title:             EXAMPLES
+    url:               /posts/
   # - title:             NOTICE
   #   url:               /NOTICE.md
   # - title:             CHANGELOG
