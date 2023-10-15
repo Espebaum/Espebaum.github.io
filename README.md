@@ -1,4 +1,10 @@
-# Hydejack Starter Kit
+# 나는 gyopark
+
+## 42 seoul Cadet
+
+### 타입스크립트 공부, 깃허브 블로그 쓰기
+
+<!-- # Hydejack Starter Kit
 
 A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.com/).
 
@@ -17,4 +23,4 @@ A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.
 
 [^1]: Requires Bundler. Install with `gem install bundler`.
 
-[download]: https://github.com/hydecorp/hydejack-starter-kit/archive/master.zip
+[download]: https://github.com/hydecorp/hydejack-starter-kit/archive/master.zip -->
