@@ -45,10 +45,10 @@ hy-drawer {
   }
 
   @media screen and (min-width: $break-point-dynamic) {
-    width: calc(50% - #{$half-content});
+    width: (50% - #{$half-content});
 
 
-    --hy-drawer-peek-width: calc(50% - #{$half-content});
+    --hy-drawer-peek-width: (50% - #{$half-content});
 
   }
 
@@ -119,7 +119,7 @@ hy-drawer.loaded .sidebar {
   transform: scale(0.67);
 
   @media screen and (min-width: $break-point-1) {
-    top: calc(50% - 48px);
+    top: (50% - 48px);
     right: 10vw;
     transform: scale(1);
   }
