@@ -6,7 +6,7 @@ description: >
 category: 42cursus
 tags: libft
 ---
-## [bouns] ft_lstdelone & ft_lstclear
+## [bonus] ft_lstdelone & ft_lstclear
 
 ### <목차>
 {:.lead}

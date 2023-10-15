@@ -6,7 +6,7 @@ description: >
 category: 42cursus
 tags: libft
 ---
-## [bouns] ft_lstlast & ft_lstadd_back
+## [bonus] ft_lstlast & ft_lstadd_back
 
 ### <목차>
 {:.lead}
