@@ -81,7 +81,7 @@ output :
 	b->content : eunrlee
 ~~~
 
-- [ft_lstadd_front](https://espebaum.github.io/libft/2023-10-11-ft-lstadd-front-lstsize/) 과제에서 a, b 노드를 만들고, a 노드 앞에 b 노드를 add_front하여 b -> a -> NULL 모양의 연결 리스트를 만들어내었었다. 위 코드에서는 b -> a -> NULL인 연결 리스트에 c를 add_back 하여 b -> a -> c -> NULL인 연결 리스트를 만들었다. 아래 그림을 보자.
+- [ft_lstadd_front](https://espebaum.github.io/42cursus/ft-lstadd-front-lstsize.html) 과제에서 a, b 노드를 만들고, a 노드 앞에 b 노드를 add_front하여 b -> a -> NULL 모양의 연결 리스트를 만들어내었었다. 위 코드에서는 b -> a -> NULL인 연결 리스트에 c를 add_back 하여 b -> a -> c -> NULL인 연결 리스트를 만들었다. 아래 그림을 보자.
 
  ![ex3-list](/assets/img/libft/ex3-linked-list.png){:.lead width="800" height="150"}
 

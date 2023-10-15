@@ -180,5 +180,5 @@ output:
 		end--;
 	...
 ~~~
-- [ft_strchr](https://espebaum.github.io/libft/2023-10-05-ft-strchr/)에서 공부했듯이, strchr는 매개변수로 들어온 문자열에, 매개변수로 들어온 문자가 존재한다면 그 포인터를 반환한다. 여기서는 그 포인터의 위치는 중요하지 않고, NULL인지 아닌지만을 확인한다. 이러면 복수의 문자열도 손쉽게 확인할 수 있다.
+- [ft_strchr](https://espebaum.github.io/42cursus/ft-strtrim.html)에서 공부했듯이, strchr는 매개변수로 들어온 문자열에, 매개변수로 들어온 문자가 존재한다면 그 포인터를 반환한다. 여기서는 그 포인터의 위치는 중요하지 않고, NULL인지 아닌지만을 확인한다. 이러면 복수의 문자열도 손쉽게 확인할 수 있다.
 - 그 이후로는 my_trim과 동일한데, ft_substr을 사용했다. 사실 my_trim 함수에서 right - left + 1만큼의 메모리를 할당하고 원본 문자열에서 하나씩 문자를 집어넣는 부분이 ft_substr안에 구현되어있는 것이나 마찬가지기 때문에, 동일한 작업이 맞다.

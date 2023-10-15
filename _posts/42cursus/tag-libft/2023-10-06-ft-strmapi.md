@@ -45,7 +45,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 ~~~
 - `ft_striteri()`와 같이 문자열과 함수 포인터를 매개변수로 받아서 새로운 문자열이 들어갈 메모리를 할당하고, 함수 포인터가 가리키는 함수를 문자열에 적용해 그 새로운 문자열을 채워넣어 반환한다.
 
-- 함수 포인터에 대해서는 이전의 글 [ft_striteri()](https://espebaum.github.io/libft/2023-10-05-ft-striteri/)를 참조하자.
+- 함수 포인터에 대해서는 이전의 글 [ft_striteri()](https://espebaum.github.io/42cursus/ft-striteri.html)를 참조하자.
 
 ## (2) 용례
 ~~~c

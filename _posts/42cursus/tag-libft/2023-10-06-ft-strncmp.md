@@ -65,7 +65,7 @@ RETURN VALUES
      unsigned characters, so that `\200' is greater than `\0'.
 ~~~
 
-- [ft_memcmp](https://espebaum.github.io/libft/2023-09-25-ft-memcmp/)에서 비슷한 코드를 작성한 바 있다.
+- [ft_memcmp](https://espebaum.github.io/42cursus/ft-memcmp.html)에서 비슷한 코드를 작성한 바 있다.
 
 ~~~c
 int	ft_memcmp(const void *s1, const void *s2, size_t n);
