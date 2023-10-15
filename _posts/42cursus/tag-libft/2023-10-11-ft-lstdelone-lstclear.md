@@ -9,6 +9,8 @@ tags: libft
 ## [bonus] ft_lstdelone & ft_lstclear
 
 ### <목차>
+* MY CODES
+{:toc}
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
@@ -19,6 +21,7 @@ tags: libft
 > ft_lstclear -- Deletes and frees the given node and every successor of that node, using the function ’del’ and free(3). Finally, the pointer to the list must be set to NULL.
 
 ## (1) MY CODES
+
 ~~~c
 #include "libft.h"
 

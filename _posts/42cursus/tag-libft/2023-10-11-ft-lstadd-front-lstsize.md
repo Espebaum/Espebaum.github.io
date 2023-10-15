@@ -9,6 +9,8 @@ tags: libft
 ## [bonus] ft_lstadd_front & ft_lstsize
 
 ### <목차>
+* MY CODES
+{:toc}
 {:.lead}
 [1. MY CODES](#1-my-codes)
 
@@ -120,16 +122,30 @@ int main()
 }
 ~~~
 
-- 이 ft_lstadd_front를 통해 헤드 포인터가 바뀌는 과정을 상세히 보여주자면 위 코드와 같다. 
+- 이 ft_lstadd_front를 통해 헤드 포인터가 바뀌는 과정을 상세히 보여주자면 위 코드와 같다. 플로우를 살펴보자면...
 
-### 1. 맨 처음 (t_list*) a의 메모리 주소가 `0x0000000100604080`로 할당된다. 이후 (t_list*) b의 메모리 주소가 `0x0000000100604090`로 할당된다.
-  -> `sizeof(t_list*)`는 8 바이트인데, t_list 구조체 자체는 void 포인터와 t_list 포인터를 하나씩 갖고 있기 때문에, **구조체의 바이트 패딩**으로 인해 구조체 b는 구조체 a의 16바이트 뒤에 할당된다. 즉, `sizeof(t_list) = 16`이다. 차이가 느껴지는가?
 
-### 2. ft_lstadd_front(&a, b)를 지나면서 a와 b가 동일한 주소, `(t_list *) a, b = 0x0000000100604090)`를 가리키게 된다. 어떻게 된걸까?
+~~~md
+1. 맨 처음 (t_list*) a의 메모리 주소가 `0x0000000100604080`로 할당된다. 
+~~~
+~~~md
+2. 이후 (t_list*) b의 메모리 주소가 `0x0000000100604090`로 할당된다.
+~~~
+
+-> `sizeof(t_list*)`는 8 바이트인데, t_list 구조체 자체는 void 포인터와 t_list 포인터를 하나씩 갖고 있기 때문에, **구조체의 바이트 패딩**으로 인해 구조체 b는 구조체 a의 16바이트 뒤에 할당된다. 즉, `sizeof(t_list) = 16`이다. 차이가 느껴지는가?
+
+~~~md
+3. ft_lstadd_front(&a, b)를 지나면서 a와 b가 동일한 주소, `(t_list *) a, b = 0x0000000100604090)`를 가리키게 된다.
+~~~
+
+### * 어떻게 된걸까?
+
+- 아래는 ft_lstadd_front의 프로토타입인데
+
 ~~~c
 void	ft_lstadd_front(t_list **lst, t_list *new)
 ~~~
-  -> ft_lstadd_front의 매개변수로 전해진 (t_list** ) lst는 (t_list*) a의 포인터이고(&a), new는 (t_list*) b 자신이다. 
+-> ft_lstadd_front의 매개변수로 전해진 `(t_list**) lst`는 `(t_list*) a`의 포인터이고(&a), new는 `(t_list*) b` 자신이다. 
 
 ~~~c
 void	ft_lstadd_front(t_list **lst, t_list *new)
@@ -138,6 +154,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 ~~~
+
 ~~~plain
 p lst, (t_list **) $1 = 0x00007ffeefbff500
 p new->next (s_list *) $2 = 0x0000000100604080
@@ -145,6 +162,7 @@ p new, (t_list *) $3 = 0x0000000100604090
 p *lst (t_list *) $4 = 0x0000000100604090
 (t_list *) a, b = 0x0000000100604090 
 ~~~
+
   -> 원래라면 NULL을 가리키고 있었을 new->next를 *lst를 가리키도록 한다. *lst는 a이므로, new->next는 a를 가리키게 된다(0x0000000100604080). 이제 b(new)의 next는 a를 가리키게 된다. 이후 *lst를 new로 변경한다. 이제 *lst는 a가 아니라 b(0x0000000100604090)를 가리키게 된다. a의 경우, a의 포인터값(이중 포인터 &a)가 매개변수로 전달되었으므로 일련의 변화가 스코프 바깥으로 벗어나도 적용된다. 결과적으로 a와 b가 둘다 메모리 주소 0x0000000100604090(b의 주소)를 가리키게 되는 것이다. 이 부분과 관련해서 실수하기 쉬운 부분이 있다. 
 
 ~~~c
@@ -159,6 +177,7 @@ int main()
 	return 0;
 }
 ~~~
+
 ~~~plain
 a.out(43073,0x110304dc0) malloc: *** error for object 0x7fdc80c05950: pointer being freed was not allocated
 a.out(43073,0x110304dc0) malloc: *** set a breakpoint in malloc_error_break to debug
@@ -185,6 +204,7 @@ int	ft_lstsize(t_list *lst)
 	printf("size of linked list : %d\n", ft_lstsize(b));
 ...
 ~~~
+
 ~~~plain
 output: 
 	sizeof linked list : 2
