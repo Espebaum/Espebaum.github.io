@@ -28,4 +28,10 @@ git commit -m "ongoing: push_swap_3"
 ~~~
 - 글 하나를 작성중일 때의 컨벤션, progress에 비해선 이게 좋아보이는데, 더 짧고 더 직관적인 좋은 문구가 없으려나?
 
+### 복수의 글에 작업했을 때의 커밋
+~~~md
+git commit -m "fixed: push_swap_2, ongoing: push_swap_3"
+~~~
+- 복수의 글에 작업했을 때의 컨벤션, 2개 이상의 작업에 대해서는 그냥 2개까지만 적는 걸로 했다. 
+
 생각날 때마다 더 적어보자
