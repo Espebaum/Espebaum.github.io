@@ -17,7 +17,7 @@ sidebar: true
 order: 2
 
 description: >
-  42 서울에서 진행했던 과제들에 관한 기록. C, C++로 
+  42 서울에서 진행했던 과제들에 관한 기록. C, C++로 진행되었다.
 
 # Exclude this example category from the sitemap.
 # DON'T USE THIS SETTING IN YOUR CATEGORIES!
