@@ -4,14 +4,14 @@ layout: list
 type: category
 
 # The title of the tag's page.
-title: Posts
+title: Diary
 
 # The name of the tag, used in a post's front matter (e.g. tags: [<slug>]).
-slug: posts
+slug: diary
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-  와 깃허브 블로그 진짜 어렵네요.
+  진짜 아무 말이나 막 해도 되나요? 저는 Fira Code 글씨체를 좋아해요. 뭔가 깔끔하잖아요.
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
