@@ -1,11 +1,13 @@
 ---
-layout: post
-title: Example Content
-description: >
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-hide_last_modified: true
-category: posts
+layout: null
+# title: Example Content
+# description: >
+#   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
+# hide_last_modified: true
+# category: posts
 ---
+
+layout: null을 layout: post로 수정해 글을 보이게 할 수 있다.
 
 Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
 
