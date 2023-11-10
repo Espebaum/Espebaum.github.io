@@ -6,8 +6,6 @@ description: >
 category: javascript
 ---
 
-- 써야함
-
 * table of contents
 {:toc}
 
