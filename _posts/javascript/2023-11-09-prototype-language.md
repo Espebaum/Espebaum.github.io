@@ -6,6 +6,8 @@ description: >
 category: javascript
 ---
 
+- 써야함
+
 * table of contents
 {:toc}
 
@@ -44,4 +46,5 @@ let person1 = new Person('Tammi', 'Smith', 32, 'neutral',
 
 <center><img src="/assets/img/javascript/person-bio.png" width="100%" height="100%"></center><br>
 
-- 이번엔 `person1.valueOf()`을 호출해보자. 함수가 실행되고 해당 값이 console에 표시된다. Person의 생성자에는 `valueOf()` 함수에 대한 내용이 없는데, 어떻게 이 함수가 실행되는걸까? 이는 Javascript의 
+- 이번엔 `person1.valueOf()`을 호출해보자. 함수가 실행되고 해당 값이 console에 표시된다. Person의 생성자에는 `valueOf()` 함수에 대한 내용이 없는데, 어떻게 이 함수가 실행되는걸까? 이는 Javascript의 프로토타입 상속의 특징이다.
+

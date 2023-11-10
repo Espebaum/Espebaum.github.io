@@ -6,6 +6,7 @@ description: >
 category: javascript
 ---
 
+- 써야함
 ## 스크립트 로딩 전략
 
 ~~~js
