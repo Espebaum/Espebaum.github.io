@@ -1,0 +1,246 @@
+---
+layout: post
+title: '연결 리스트'
+description: >
+    "0x04강 - 연결리스트"
+category: posts
+tag: algo
+---
+
+- table of contents
+{:toc}
+
+## 연결 리스트
+
+[[바킹독 실전 알고리즘] 0x04강 - 배열](https://blog.encrypted.gg/932)
+
+워크북 : 백준 1406, 5397, 1158
+
+[백준 1406, 에디터](https://www.acmicpc.net/problem/1406)
+
+<center><img src="/assets/img/boj/boj1406.png" width="100%" height="100%"></center><br>
+
+- 바킹독 야매 연결 리스트(어지럽다)와 STL list의 두 가지 방법을 사용하여 풀었다. 야매 연결 리스트는 계속계속 복습해야 할 것같다. 
+
+### 야매 연결 리스트를 사용한 풀이
+
+~~~c++
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <utility>
+#define all(x) (x).begin(), (x).end()
+#define rep(i, a, b) for (int i = (a); i < (b); ++i)
+using namespace std;
+
+const int MX = 1000005;
+int dat[MX], pre[MX], nxt[MX];
+int unused = 1;
+
+void insert(int addr, int num)
+{
+    dat[unused] = num;
+    pre[unused] = addr;
+    nxt[unused] = nxt[addr];
+    if (nxt[addr] != -1)
+        pre[nxt[addr]] = unused;
+    nxt[addr] = unused;
+    unused++;
+}
+
+void erase(int addr)
+{
+    nxt[pre[addr]] = nxt[addr];
+    if (nxt[addr] != -1)
+        pre[nxt[addr]] = pre[addr];
+}
+
+void traverse()
+{
+    int cur = nxt[0];
+    while (cur != -1)
+    {
+        cout << (char) dat[cur];
+        cur = nxt[cur];
+    }
+}
+
+int main(void)
+{
+    fill(pre, pre + MX, -1);
+    fill(nxt, nxt + MX, -1);
+    string  s;
+    cin >> s;
+
+    int cursor = 0;
+    for (int i = 0; i < s.length(); i++) {
+        insert(cursor, s[i]);
+        cursor++;
+    }
+
+    int num;
+    cin >> num;
+
+    while (num--) {
+        char    c;
+        cin >> c;
+        if (c == 'L') {
+            if (pre[cursor] != -1)
+                cursor = pre[cursor];
+        }
+        else if (c == 'D') {
+            if (nxt[cursor] != -1) {
+                cursor = nxt[cursor];
+            }
+        }
+        else if (c == 'B') {
+            if (pre[cursor] != -1) {
+                erase(cursor);
+                cursor = pre[cursor];
+            }
+        }
+        else {
+            char w;
+            cin >> w;
+            insert(cursor, w);
+            cursor = nxt[cursor];
+        }
+    }
+    traverse();
+}
+~~~
+
+### list를 사용한 풀이
+
+~~~c++
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <list>
+#include <map>
+#include <utility>
+#define all(x) (x).begin(), (x).end()
+#define rep(i, a, b) for (int i = (a); i < (b); ++i)
+using namespace std;
+
+string  s;
+int     tc;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> s;
+    cin >> tc;
+    list<char> l;
+    for (int i = 0; i < s.length(); i++) {
+        l.push_back(s[i]);
+    }
+    list<char>::iterator cursor = l.end(); // a b c d (cur)
+
+    while (tc--) {
+        char    c;
+        cin >> c;
+        if (c == 'P') {
+            char    w;
+            cin >> w;
+            l.insert(cursor, w);
+        }
+        else if (c == 'L') {
+            if (cursor != l.begin())
+                cursor--;
+        }
+        else if (c == 'D') {
+            if (cursor != l.end())
+                cursor++;
+        }
+        else if (c == 'B') {
+            if (cursor != l.begin()) {
+                cursor--;
+                cursor = l.erase(cursor);
+            }
+        }
+    }
+
+    for (list<char>::iterator iter = l.begin(); iter != l.end(); iter++) {
+        cout << *iter;
+    }
+
+    return 0;
+}
+~~~
+
+### 두 방법의 차이
+
+- STL list의 경우 .end를 더미 노드로 남겨놓는데, 바킹독 야매 연결 리스트는 맨 앞 0번째 노드를 더미 노드로 남겨놓는다. 이것 때문에 조건문이 미묘하게 달라지는데, 머릿속에 정리가 잘 안된다. ~~솔직히 벽느껴짐~~
+
+<center><img src="/assets/img/boj/boj1406-1.png" width="100%" height="100%"></center><br>
+
+- 화살표로 그려놓은게 커서다. iterator 혹은 cursor로 노드를 가리키는 주소라고 볼 수 있다. 아무래도 내 상식 속의 커서랑 저 포인터가 동치가 안된다. 애초에 야매 리스트의 cursor랑 List의 iterator 자체도 동치가 아니다.
+
+<center><img src="/assets/img/boj/boj1406-2.png" width="100%" height="100%"></center><br>
+
+- 개판을 쳐놓긴 했는데, 내 머리속에서 추상화된 야매와 List의 뉘앙스의 차이다. 빨간 색 화살표의 위치가 실제 커서의 위치이고(빨간 화살표 자체는 다음 노드를 가리키는 포인터), 하늘색 덩어리가 "노드" 라고 할 수 있는 느낌이다.
+
+- 내가 찾은 두 방법의 차이가 극대화되는 분기는 'B'다.
+
+~~~c++
+// 야매
+       else if (c == 'B') {
+            if (pre[cursor] != -1) {
+                erase(cursor); // 노드 지움
+                cursor = pre[cursor]; // 커서 옮김
+            }
+        } 
+        // erase랑 커서 옮김을 한동작으로 보는게 편하다.
+        // list의 erase처럼, cursor의 값을 반환할수가 없기 때문에
+        // 추가로 cursor = pre[cursor]같은 동작이 필요하다.ㄴ
+
+// List
+        else if (c == 'B') {
+            if (cursor != l.begin()) {
+                cursor--; // 커서 옮김
+                cursor = l.erase(cursor); // 노드 지움
+            }
+        }
+        // erase가 지우는 해당 노드의 다음 노드 주소를 반환하기 때문에
+        // 커서가 자동으로 옮겨지고, 추가 동작은 필요없다.
+~~~
+
+- cursor를 빼는 것과, cursor가 가리키는 노드를 지우는 순서가 서로 다르다. 저 순서를 바꾸면 즉시 틀린다.
+
+- 그림 그려놓은 거랑, 코드를 같이 보면서 눈으로 따라가면 어떻게 어떻게 아귀가 맞아떨어지기는 하는데 이렇게까지 하는게 아니면 머리속에서 그림이 안그려진다. 
+
+~~~md
+야매(왼쪽을 지움): a 노드를 지운다고 해보자. 이미 cursor가 a노드를 가리키므로 지워버리기만 하면 된다(왼쪽을 지움). a 노드의 커서 화살표만이 그대로 남아있다(a라는 내용은 지워짐). 그러나 이전 노드의 다음 노드 화살표(여기선 더미)는 이미 b노드를 가리킨다. b노드의 이전 노드 화살표도 이미 더미 노드를 가리킨다. 커서 화살표를 pre로 넘겨버리면 a 노드는 연결 리스트에서 제외된다.
+
+list(오른쪽을 지움): a 노드를 지운다고 해보자. a 노드 자체를 가리키는 cursor는 begin이므로, 사실상 b노드를 가리키는 cursor를 받아서 a를 지우는거나 마찬가지기 때문에 분기에 들어오자마자 cursor--를 하고 노드를 지운다(반드시 오른쪽밖에 지울 수 없으므로 커서가 a와 b 사이에 있을 때 a를 지우기 위해서는 일단 커서를 빼서 a앞으로 오게 한 후에 erase해서 a를 지워야 한다는 것). erase하면서 커서 화살표를 nxt로 넘겨버리면 a 노드는 연결 리스트에서 제외된다. 야매와 list는 거의 반대 방향으로 움직이며 작업한다. 
+
+lt.erase(iter)- iterator가 가리키는 원소를 삭제한다.
+    반환값은 삭제한 원소의 다음 원소를 가리키는 iterator를 반환한다
+~~~
+
+<center><img src="/assets/img/boj/boj1406-3.png" width="100%" height="100%"></center><br>
+
+- 양방향 포인터 표시를 마친 그림이다. 'P'에 대해 생각해보자. 야매 연결 리스트의 경우 빨간색 화살표(cursor) 오른쪽에 넣고, list의 경우 왼쪽에 넣는다. 
+
+- 야매의 경우 cursor 오른쪽에 넣고, cursor가 그 넣은 노드를 가리킨다. 커서 오른쪽에 글자가 들어갔으므로, 우리가 생각하는 메모장처럼 글자의 추가와 함께 커서가 오른쪽으로 밀리게 하려면 커서를 한칸 옮겨야 한다(cursor = nxt[cursor]).
+
+- 그러나 STL list의 경우, cursor 왼쪽에 넣으므로 애초에 우리가 생각하는 메모장처럼 움직이기 때문에 그냥 insert하면 된다.
+
+
+<center><img src="/assets/img/boj/boj1406-4.png" width="100%" height="100%"></center><br>
+
+- ~~이 그림을 가보로 전하겠습니다...~~
+
+- 기묘했던 커서 위치와 빨간 화살표의 위치를 교정한 그림, 커서는 언제나 리스트의 size인 L보다 하나 많은 L + 1이게 되지만, 야매와 리스트의 노드 포인팅 방향은 다르다. 어느 쪽을 더미 노드로 보느냐의 차이다. 야매는 커서가 왼쪽 요소에 종속되고, List는 커서가 오른쪽 요소에 종속된다. 단연코 STL list가 편리하다고 볼 수 있겠지만, list를 못쓰게 하면 야매를 구현해야 한다. ~~그런곳이 있으려나?~~ 
