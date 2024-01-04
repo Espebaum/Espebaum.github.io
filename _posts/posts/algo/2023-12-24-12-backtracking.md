@@ -50,3 +50,409 @@ tag: algo
 |----------|---------|---------|
 
 
+### [BOJ 15649, N과 M (1)](https://www.acmicpc.net/problem/15649)
+
+<center><img src="/assets/img/boj/boj15649.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M; // 4 3
+int arr[10];
+int isused[10];
+
+void    func(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return ;
+    }
+
+    for (int i = 1; i <= N; i++) {
+        if (!isused[i]) {
+            arr[k] = i;
+            isused[i] = 1;
+            func(k + 1);
+            isused[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> N >> M;
+
+    func(0);
+
+    return 0;
+}
+~~~
+
+~~~c++
+    for (int i = 1; i <= N; i++) {
+        if (!isused[i]) {
+            arr[k] = i;
+            isused[i] = 1;
+            func(k + 1);
+            isused[i] = 0;
+        }
+    }
+~~~
+
+- 이 반복문이 백트래킹의 전형적인 구조라고 한다. 반복문을 돌면서 arr를 채워넣고, 특정 수를 채워넣었다는 것을 체크하는 isused 배열을 1로 바꾸고 재귀를 타고 들어가는 구조다. 이 반복문은 N과 M 모든 시리즈에 사용되기 때문에, 이 반복문만 이해한다면 모든 N과 M 문제를 풀 수 있게 된다.
+
+### [BOJ 9663, N-Queen](https://www.acmicpc.net/problem/9663)
+
+<center><img src="/assets/img/boj/boj9663-01.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int col[15];
+int N, sum;
+
+bool    check(int m)
+{
+    for (int i = 0; i < m; i++) {
+        if (col[i] == col[m] || abs(col[i] - col[m]) == abs(i - m))
+            return false;
+    }
+    return true;
+}
+
+void    func(int m)
+{
+    if (m == N) {
+        sum++;
+    }
+    else {
+        for (int i = 0; i < N; i++)
+        {
+            col[m] = i;
+            if (check(m))
+                func(m + 1);
+        }
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> N;
+
+    func(0);
+    cout << sum;
+
+    return 0;
+}
+~~~
+
+- 피신에서 비슷한 문제를 풀어본 적이 있다. ~풀어본 적만 있다.~
+
+- 퀸의 이동 경로 때문에, 한 행에는 반드시 하나의 퀸만 위치할 수 있다. 따라서 우리는 input N을 받은 후 크기가 N인 일차원 배열 col[N]을 선언하여 퀸의 위치를 저장할 수 있다.
+
+- 이후 0번째 열부터 시작하면서, 0번째 행부터 차례로 퀸을 놓기 시작하여 조건에 맞으면 계속해서 퀸을 놓아나가고, N번째 퀸을 놓는데 성공했다면 경우의 수를 늘린다. 이때 퀸의 위치가 적절한 지 따지는 함수가 중요하다.
+
+~~~c++
+bool    check(int m)
+{
+    for (int i = 0; i < m; i++) {
+        if (col[i] == col[m] || abs(col[i] - col[m]) == abs(i - m))
+            return false;
+    }
+    return true;
+}
+~~~
+
+- `col[i]`는 행(x)번호, `i`는 열 번호를 의미한다. 같은 라인(행)에 있거나, 혹은 대각선에 있는 경우 false를 반환한다.
+
+<center><img src="/assets/img/boj/boj9663-02.png" width="100%" height="100%"></center><br>
+
+- 보라색으로 표시한 두 좌표와, 노란색으로 표시한 두 좌표가 대각선 관계다. 
+
+~~~c++
+abs(col[i] - col[m]) == abs(i - m)
+~~~
+
+- 가 성립하면 대각선 관계다. (2, 1) 과 (5, 4) 그리고 (3, 2) 와 (0, 5)는 위의 수식이 성립한다. 아까 말했듯이 **`col[i]`는 x좌표, `i`는 y좌표기 때문에**
+
+~~~c++
+ x  y   x  y
+(2, 1) (5, 4)
+=> abs(5 - 2) = abs(4 - 1)
+
+ x  y   x  y
+(3, 2) (0, 5)
+=> abs(0 - 3) = abs(5 - 2)
+~~~
+
+- 임을 확인할 수 있다.
+
+### [BOJ 1182, 부분수열의 합](https://www.acmicpc.net/problem/1182)
+
+<center><img src="/assets/img/boj/boj1182.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, S;
+int arr[30];
+int cnt = 0;
+
+void    func(int cur, int sum) {
+    if (cur == N) {
+        if (sum == S) 
+            cnt++;
+        return ;
+    }
+    func(cur + 1, sum);
+    func(cur + 1, sum + arr[cur]);
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N >> S;
+
+    for (int i = 0; i < N ; i++)
+        cin >> arr[i];
+
+    func(0, 0);
+    if (S == 0)
+        cnt--;
+    cout << cnt;
+
+    return 0;
+}
+~~~
+
+- k번째 재귀에서 k번째 수를 더하거나 더하지 않거나로 두 가지로 재귀를 뻗어나가면 되는, 언뜻 생각하면 어렵지 않은 재귀지만 앞에서 N과 M 백트래킹 반복문에 도취되어 있던 나는 쉽사리 이 재귀를 생각해내지 못했다...
+
+### [BOJ 15650, N과 M (2)](https://www.acmicpc.net/problem/15650)
+
+<center><img src="/assets/img/boj/boj15650.png" width="100%" height="100%"></center><br>
+
+#### 풀이 1
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+int arr[8];
+int isused[8];
+
+void    solve(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++) {
+            cout << arr[i] << ' ';
+        }
+        cout << '\n';
+        return ;
+    }
+
+    for (int i = 1; i <= N; i++) {
+            arr[k] = i;
+            if (k > 0 && arr[k - 1] >= arr[k])
+                continue ;
+            solve(k + 1);
+    }
+}   
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N >> M;
+    solve(0);
+    return 0;
+}
+~~~
+
+#### 풀이 2
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+int arr[10];
+int isused[10];
+
+void    solve(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++) {
+            cout << arr[i] << ' ';
+        }
+        cout << '\n';
+        return ;
+    }
+
+    int st = 1;
+    if (k != 0)
+        st = arr[k - 1] + 1;
+    // arr[0]이 2면 st는 3이됨
+
+    for (int i = st; i <= N; i++) {
+        if (!isused[i]) {
+            arr[k] = i;
+            isused[i] = 1;
+            solve(k + 1);
+            isused[i] = 0;
+        }
+    }
+}   
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N >> M;
+
+    solve(0);
+
+    return 0;
+}
+~~~
+
+- N과 M (1)과 다르게 **고른 수열이 오름차순이어야 한다는** 조건이 추가되었다. 따라서 k + 1번째 수는 반드시 k번째 수보다 커야만 한다. 따라서 k + 1번째 수가 k번째 수보다 작을 때, 그 수열은 넘어가기 위한 조건이 필요하다. 풀이 1은 내가 생각해낸 조건인데, 직관적이긴 한데 백트래킹이라는 컨셉트에서 좀 벗어난 것 같다.
+
+- 풀이 2는 바킹독 문제집의 정해 코드인데 따로 st라는 숫자를 두고 st가 arr[k]보다 반드시 크도록 만들어서 애초에 k + 1번째 수가 k번째 수보다 작은 상황을 만들지 않는다. 과연 현명한 풀이...
+
+### [BOJ 15651, N과 M (3)](https://www.acmicpc.net/problem/15651)
+
+<center><img src="/assets/img/boj/boj15651.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+int arr[10];
+int isused[10];
+
+void    solve(int k)
+{
+    if (k == M)
+    {
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << " ";
+        cout << '\n';
+        return ;
+    }
+
+    for (int i = 1; i <= N; i++) {
+        arr[k] = i;
+        solve(k + 1);
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> N >> M;
+
+    solve(0);
+    return 0;
+}
+~~~
+
+- N과 M (1)에서 **같은 수를 여러 번 골라도 된다는 조건**이 추가되었다. isused 배열을 사용했던 이유가 중복을 체크하기 위함이었기 때문에, 중복해서 수를 골라도 된다면 굳이 isused 배열을 사용할 필요가 없이 바로 다음 재귀로 들어가면 된다.
+
+### [BOJ 15652, N과 M (4)](https://www.acmicpc.net/problem/15652)
+
+<center><img src="/assets/img/boj/boj15652.png" width="100%" height="100%"></center><br>
+
+#### 풀이 1
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+int arr[10];
+int isused[10];
+
+void    solve(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return ;
+    }
+
+    for (int i = 1; i <= N; i++)
+    {
+        arr[k] = i;
+        if (k > 0 && arr[k - 1] > arr[k])
+            continue ;
+        solve(k + 1);
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N >> M;
+    solve(0);
+    return 0;
+}
+~~~
+
+
+#### 풀이 2
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+int arr[10];
+int isused[10];
+
+void    solve(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return ;
+    }
+
+    int st = 1;
+    if (k != 0)
+        st = arr[k - 1];
+
+    for (int i = st; i <= N; i++)
+    {
+        arr[k] = i;
+        solve(k + 1);
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N >> M;
+    solve(0);
+    return 0;
+}
+~~~
+ 
+- **중복이 허용되고, 비내림차순이어야 한다**. 비내림차순이라는 것은 k + 1번째 수가 k번째 수와 같거나 큰 수열이다. N과 M (2)와 거의 동일한데 **오름차순인지, 비내림차순인지의 차이가 있다.**
