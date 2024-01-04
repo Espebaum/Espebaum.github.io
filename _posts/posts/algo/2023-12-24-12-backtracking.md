@@ -456,3 +456,204 @@ int main()
 ~~~
  
 - **중복이 허용되고, 비내림차순이어야 한다**. 비내림차순이라는 것은 k + 1번째 수가 k번째 수와 같거나 큰 수열이다. N과 M (2)와 거의 동일한데 **오름차순인지, 비내림차순인지의 차이가 있다.**
+
+### [BOJ 15654, N과 M (5)](https://www.acmicpc.net/problem/15654)
+
+<center><img src="/assets/img/boj/boj15654.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+vector<int> v;
+int arr[10];
+int isused[10];
+
+void    solve(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return ;
+    }
+
+    for (int i = 0; i < N; i++) {
+        if (!isused[i]) {
+            arr[k] = v[i];
+            isused[i] = 1;
+            solve(k + 1);
+            isused[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    cin >> N >> M;
+    for (int i = 0; i < N; i++) {
+        int num; cin >> num;
+        v.push_back(num);
+    }
+    sort(v.begin(), v.end());
+    solve(0);
+
+    return 0;
+}
+~~~
+
+- N과 M (1)과 완전히 동일하지만, 따로 수열이 주어지기 때문에 arr[]에 처음부터 주어진 배열을 할당하거나 출력할 때 인덱스를 주거나 해야 한다. 마찬가지로 N과 M (6), (7), (8)은 (2), (3), (4)와 완전히 동일한 유형의 문제이기 때문에 넘어간다.
+
+### [BOJ 15663, N과 M (9)](https://www.acmicpc.net/problem/15663)
+
+<center><img src="/assets/img/boj/boj15663.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+int arr[10];
+int isused[10];
+vector<int> v;
+
+// 1 7 9 9
+void    solve(int k)
+{
+    if (k == M) {
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return ;
+    }
+    
+    int tmp = 0;
+    for (int i = 0; i < N; i++) {
+        if (!isused[i] && tmp != v[i]) {
+            arr[k] = v[i];
+            isused[i] = 1;
+            tmp = arr[k];
+            solve(k + 1);
+            isused[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N >> M;
+
+    for (int i = 0; i < N; i++) {
+        int num; cin >> num;
+        v.push_back(num);
+    }
+
+    sort(v.begin(), v.end());
+    solve(0);
+
+    return 0;
+}
+~~~
+
+- **중복되는 수가 포함된 수열이 주어지는데, 중복되는 수열을 여러 번 출력하면 안된다.** 이걸 어떻게 처리해야 할 지가 곤란스럽다. 결론적으로 말하자면 임시 int 변수에 배열의 마지막 수를 저장하고, 다음 인덱스의 수와 임시 변수를 비교하면 된다.
+
+~~~c++
+int tmp = 0; // 1) 임시 변수를 만든다
+for (int i = 0; i < N; i++) {
+    if (!isused[i] && tmp != v[i]) { 
+        // 3) 조건에 현재 수열의 수가 배열의 마지막 수와 같은지도 포함한다.
+        arr[k] = v[i];
+        isused[i] = 1;
+        tmp = arr[k]; // 2) 배열의 마지막 수를 임시 변수에 저장한다
+        solve(k + 1);
+        isused[i] = 0;
+    }
+}
+~~~
+
+- 이렇게 하면 재귀가 어느 정도까지 파고들었가와 관계없이 깔끔하게 중복되는 수열을 걸러낼 수가 있다. 이런 씽크빅이 있었을 줄이야...
+
+### [BOJ 6603, 로또](https://www.acmicpc.net/problem/6603)
+
+<center><img src="/assets/img/boj/boj6603.png" width="100%" height="100%"></center><br>
+
+~~~c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int K;
+int arr[10];
+int isused[10];
+int num[10];
+
+void    solve(int k)
+{
+    if (k == 6) {
+        for (int i = 0; i < 6; i++)
+            cout << arr[i] << ' ';
+        cout << '\n';
+        return ; 
+    }
+
+    for (int i = 0; i < K; i++) {
+        if (!isused[i]) {
+            arr[k] = num[i];
+            if (k > 0 && arr[k - 1] > arr[k])
+                continue; 
+            isused[i] = 1;
+            solve(k + 1);
+            isused[i] = 0;
+        }
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    while (1)
+    {
+        cin >> K;
+        if (K == 0)
+            break ;
+        for (int i = 0; i < K; i++) {
+            int t; cin >> t;
+            num[i] = t;
+        }
+
+        solve(0);
+        cout << '\n';
+
+        for (int i = 0; i < 10; i++) {
+            arr[i] = 0;
+            num[i] = 0;
+        }
+    }
+
+    return 0;
+}
+~~~
+
+- 앞에서 풀었던 N과 M 유형에서 중복을 체크하는 isused 배열, 그리고 오름차순이 아닌 배열을 배제하는 조건식을 넣어 문제에서 요구하는 조건을 맞추었다. 
+
+~~~c++
+for (int i = 0; i < K; i++) {
+    if (!isused[i]) {
+        arr[k] = num[i];
+        if (k > 0 && arr[k - 1] > arr[k])
+            continue; 
+        isused[i] = 1;
+        solve(k + 1);
+        isused[i] = 0;
+    }
+}
+~~~
+
+- 사실상 N과 M 문제의 연장선이 아닌지...
