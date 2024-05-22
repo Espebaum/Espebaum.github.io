@@ -2,6 +2,7 @@
 layout: post
 title:  "윈도우 환경에서 wsl2로 깃허브 블로그 연동"
 category: posts
+tag: another
 ---
 
 ruby와 gem 때문에 애를 먹었다.
