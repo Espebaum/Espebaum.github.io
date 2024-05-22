@@ -22,7 +22,7 @@ template< class RandomIt, class Compare >
 void sort( RandomIt first, RandomIt last, Compare comp );
 ~~~
 
-- 두 번째 사용법에서 'Compare'는 비교 함수 혹은 함수 객체가 될 수 있다. 함수 포인터는 함수의 주소를 저장하는 포인터이며, 함수처럼 호출될 수 있다. 함수 객체는 함수 호출 연산자(operator())를 오버로딩한 객체이다. **Compare는 함수 객체와 함수 포인터 모두를 받아들일 수 있는 매개변수이다.**
+- 두 번째 사용법에서 'Compare'는 비교 함수 혹은 함수 객체가 될 수 있다. 함수 포인터는 함수의 주소를 저장하는 포인터이며, 함수처럼 호출될 수 있다. 함수 객체는 함수 호출 연산자(`operator()`)를 오버로딩한 객체이다. **Compare는 함수 객체와 함수 포인터 모두를 받아들일 수 있는 매개변수이다.**
 
 - 즉, std::sort는 템플릿 매개변수로 정렬하고자 하는 컨테이너 반복자의 시작 부분, 끝 부분과 더불어 **함수 호출 연산자**를 받아들이는데, 이것이 sort가 함수 포인터, 함수 객체, 람다 표현식과 같이 `operator()`를 사용하는 어떠한 인자라도 받아들일 수 있다는 것을 의미한다.
 
@@ -57,6 +57,8 @@ int main() {
 ❯ ./a.out
 9 7 6 5 4 3 2 1 1 -2 -3 -4 -5 -7
 ~~~
+
+- compare 함수를 작성하고 그 compare 함수를 가리키는 포인터를 매개변수로 sort 함수를 사용했다. compare 함수의 내용에 따라 벡터가 내림차순으로 정렬되었다(`return a > b;`).
 
 ### (2) 함수 객체를 활용한 std::sort, std::priority_queue 사용자 정의 비교 함수 사용
 
@@ -152,9 +154,7 @@ int main() {
 }
 ~~~
 
-- 마찬가지로 std::sort는 내부적으로 `operator()`를 호출하여 내부 연산을 실행한다. `operator()` 오버로딩 함수를 수정하여 다양한 기준으로 정렬을 실행할 수 있다. 
-
-- **std::priority_queue의 경우 내부 비교 연산을 위해 함수 객체 혹은 람다 표현식을 사용해야 하며, 함수 포인터를 사용할 수 없다.** 그것은 priority_queue의 내부적인 구조와 관계가 있다. priority_queue의 템플릿 매개변수는 아래와 같다.
+- 마찬가지로 std::sort는 내부적으로 `operator()`를 호출하여 내부 연산을 실행한다. `operator()` 오버로딩 함수를 수정하여 다양한 기준으로 정렬을 실행할 수 있다. `bool operator()`의 내용이 반대로 `return a < b;` 였다면 반대로 오름차순으로 정렬되었을 것이다.
 
 #### 예제 4: std::priority_queue의 타입 및 함수 객체 작성
 ~~~c++
@@ -179,6 +179,8 @@ struct compare
 //std::priority_queue<int, vector<int>, less<int>> pq;
 std::priority_queue<int, vector<int>, compare()> pq;
 ~~~
+
+- **std::priority_queue의 경우 내부 비교 연산을 위해 함수 객체 혹은 람다 표현식을 사용해야 하며, 함수 포인터를 사용할 수 없다.** 그것은 priority_queue의 내부적인 구조와 관계가 있다. priority_queue의 템플릿 매개변수는 아래와 같다.
 
 - T는 요소의 타입으로 보통 알고리즘을 풀때는 int로 사용한다. Container의 경우 요소를 저장할 컨테이너로 일반적으로 `vector<int>`를 사용한다. Compare는 요소를 비교할 함수 객체로, 기본적으로는 std::less를 사용하도록 되어있다(less<int>).
 
