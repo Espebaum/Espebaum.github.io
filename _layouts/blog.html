@@ -17,16 +17,19 @@
 layout: base
 ---
 
+
 {% assign plugins = site.plugins | default:site.gems %}
 
 {% if plugins contains 'jekyll-paginate' %}
-  {% assign posts = paginator.posts %}
+  {% assign posts = paginator.posts | limit:1 %}
 {% else %}
-  {% assign posts = site.categories[page.slug] | default:site.tags[page.slug] | default:site.posts %}
+  {% assign posts = site.categories[page.slug] | default:site.tags[page.slug] | default:site.posts | limit:1 %}
 {% endif %}
 
 {% for post in posts %}
-  {% include_cached components/post.html post=post no_link_title=page.no_link_title no_excerpt=page.no_excerpt hide_image=page.hide_image no_lightbox=true %}
+  <!-- {% include_cached components/post.html post=post no_link_title=page.no_link_title no_excerpt=page.no_excerpt hide_image=page.hide_image no_lightbox=true %} -->
+  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  <p>{{ post.content | strip_html | truncatewords:50 }}</p>
 {% endfor %}
 
 {% if plugins contains 'jekyll-paginate' %}
