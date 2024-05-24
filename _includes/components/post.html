@@ -34,7 +34,7 @@
           <span class="clap-count" data-url="{{ post.url | absolute_url }}"></span>
         {% endif %}
       {% endcapture %}
-      <span class="ellipsis mr1">
+      <span class="ellipsis mr1" aria-expanded="false">
         {{ foobar }}
       </span>
       {% unless site.hydejack.hide_dates or site.hydejack.hide_last_modified or post.hide_last_modified %}

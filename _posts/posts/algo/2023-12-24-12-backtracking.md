@@ -52,7 +52,7 @@ tag: algo
 
 ### [BOJ 15649, N과 M (1)](https://www.acmicpc.net/problem/15649)
 
-<center><img src="/assets/img/boj/boj15649.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj15649.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>
@@ -108,7 +108,7 @@ int main()
 
 ### [BOJ 9663, N-Queen](https://www.acmicpc.net/problem/9663)
 
-<center><img src="/assets/img/boj/boj9663-01.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj9663-01.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>
@@ -173,7 +173,7 @@ bool    check(int m)
 
 - `col[i]`는 행(x)번호, `i`는 열 번호를 의미한다. 같은 라인(행)에 있거나, 혹은 대각선에 있는 경우 false를 반환한다.
 
-<center><img src="/assets/img/boj/boj9663-02.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj9663-02.png" width="80%" height="80%"></center><br>
 
 - 보라색으로 표시한 두 좌표와, 노란색으로 표시한 두 좌표가 대각선 관계다. 
 
@@ -197,7 +197,7 @@ abs(col[i] - col[m]) == abs(i - m)
 
 ### [BOJ 1182, 부분수열의 합](https://www.acmicpc.net/problem/1182)
 
-<center><img src="/assets/img/boj/boj1182.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj1182.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>
@@ -240,7 +240,7 @@ int main()
 
 ### [BOJ 15650, N과 M (2)](https://www.acmicpc.net/problem/15650)
 
-<center><img src="/assets/img/boj/boj15650.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj15650.png" width="80%" height="80%"></center><br>
 
 #### 풀이 1
 ~~~c++
@@ -333,7 +333,7 @@ int main()
 
 ### [BOJ 15651, N과 M (3)](https://www.acmicpc.net/problem/15651)
 
-<center><img src="/assets/img/boj/boj15651.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj15651.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>
@@ -374,7 +374,7 @@ int main()
 
 ### [BOJ 15652, N과 M (4)](https://www.acmicpc.net/problem/15652)
 
-<center><img src="/assets/img/boj/boj15652.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj15652.png" width="80%" height="80%"></center><br>
 
 #### 풀이 1
 ~~~c++
@@ -459,7 +459,7 @@ int main()
 
 ### [BOJ 15654, N과 M (5)](https://www.acmicpc.net/problem/15654)
 
-<center><img src="/assets/img/boj/boj15654.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj15654.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>
@@ -509,7 +509,7 @@ int main()
 
 ### [BOJ 15663, N과 M (9)](https://www.acmicpc.net/problem/15663)
 
-<center><img src="/assets/img/boj/boj15663.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj15663.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>
@@ -581,7 +581,7 @@ for (int i = 0; i < N; i++) {
 
 ### [BOJ 6603, 로또](https://www.acmicpc.net/problem/6603)
 
-<center><img src="/assets/img/boj/boj6603.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/boj/boj6603.png" width="80%" height="80%"></center><br>
 
 ~~~c++
 #include <bits/stdc++.h>

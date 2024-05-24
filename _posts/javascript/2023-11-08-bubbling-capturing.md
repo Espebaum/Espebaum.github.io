@@ -74,7 +74,7 @@ category: javascript
 
 - 대략 아래와 같은 모양을 하고 있다.
 
-<br><center><="/assets/img/javascript/js-bubbling.png" width="100%" height="100%"></center><br>
+<br><center><="/assets/img/javascript/js-bubbling.png" width="80%" height="80%"></center><br>
 
 - 먼저 button이 있고 그 밑에 토끼 영상을 포함한 div 블록이 있다. 버튼(`const btn`)을 누르면 `displayVideo()` 함수가 호출되어 div 블록의 attribute가 hidden에서 showing으로 바뀌며 숨겨져 있던 영상 블록(<div>)이 드러나게 된다. 
 

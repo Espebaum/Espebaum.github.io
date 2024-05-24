@@ -42,11 +42,11 @@ let person1 = new Person('Tammi', 'Smith', 32, 'neutral',
 
 - Person 생성자와 인스턴스 하나를 만들었다고 치자. 그리고 console에서 `person1.bio()`를 호출하면, 함수가 잘 실행되고 해당 alert가 홈페이지 상단에 표시될 것이다.
 
-<center><img src="/assets/img/javascript/js-person-bio.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/javascript/js-person-bio.png" width="80%" height="80%"></center><br>
 
 - 이번엔 `person1.valueOf()`을 호출해보자. 함수가 실행되고 해당 값이 console에 표시된다. Person의 생성자에는 `valueOf()` 함수에 대한 내용이 없는데, 어떻게 이 함수가 실행되는걸까? 이는 Javascript의 프로토타입 상속의 특징이다.
 
-<center><img src="/assets/img/javascript/js-prototype.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/javascript/js-prototype.png" width="80%" height="80%"></center><br>
 
 - `person1.valueOf()`가 호출될 수 있는 이유는, **Object의 prototype에 .valueOf() 함수가 정의되어 있고, Person 객체는 Object.prototype의 매서드들을 가지고 상속되었으며, person1은 그 Person의 prototype을 가지고 만들어진 객체이기 때문에 프로토타입 체인을 거슬러 올라가면 결국 .valueOf() 매서드를 찾아낼 수 있기 때문이다.** 아래와 같은 절차를 밟는다.
 
@@ -80,7 +80,7 @@ person2.__proto__;
 Person.prototype.constructor;
 ~~~
 
-<center><img src="/assets/img/javascript/js-prototype-constructor.png" width="100%" height="100%"></center><br>
+<center><img src="/assets/img/javascript/js-prototype-constructor.png" width="80%" height="80%"></center><br>
 
 - 이 constructor 속성은 원본 생성자 함수 자신을 가리킨다. 배운 바에 의하면 Person의 prototype들로 생성된 모든 객체들이 Person의 prototype에 접근할 수 있는데, 마찬가지로 person1과 person2에서도 constructor에 접근할 수 있다.
 
