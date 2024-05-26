@@ -28,11 +28,11 @@ layout: base
 {% endif %}
 
 
-{% for post in posts limit:5 %}
+{% for post in posts limit:3 %}
   <article id="post{{ post.id | replace:'/','-' }}" class="page post mb6" role="article">
     <header>
       <h2 class="post-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        * <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </h2>
       <div class="post-date" style="display: flex; align-items: center;">
         {%- assign post_format = site.data.strings.date_formats.post | default:"%d %b %Y" -%}
