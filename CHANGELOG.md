@@ -1291,7 +1291,7 @@ May 15 2017
 
 ## v6.0.0 (JavaScripten)
 May 3 2017
-{:.heading.post-date}
+{:.heading.}
 
 Hydejack has always featured a JavaScript-heavy sidebar, but other than that, JS has been used sparingly. This changes with this release, which adds a ton of (optional) code that changes the feel of the theme dramatically.
 

@@ -84,7 +84,7 @@ copyright:             © 2023. All rights reserved.
 permalink:             none
 
 # Pagination configuration (used by the `blog` layout)
-paginate:              10
+paginate:              5
 paginate_path:         /:num/
 excerpt_separator:     <!--more-->
 

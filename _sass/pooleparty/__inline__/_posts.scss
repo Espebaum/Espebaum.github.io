@@ -62,7 +62,7 @@ body:not(.no-third-column) {
 .post-date {
   @extend .h4;
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   margin-top: -.6rem;
   height: 2rem;
   margin-bottom: .85rem;
