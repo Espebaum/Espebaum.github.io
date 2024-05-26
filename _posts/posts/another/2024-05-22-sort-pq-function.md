@@ -3,7 +3,7 @@ layout: post
 title: "c++ Sort, Priority_queue 사용자 정의 비교 함수 사용법"
 category: posts
 tag: another
-message: "알고리즘 문제를 풀때 자주 사용하는 std::sort, std::priority_queue의 사용자 정의 비교 함수의 사용법을 공부해보자"
+message: "알고리즘 문제를 풀때 자주 사용하는 std::sort, std::priority_queue의 사용자 정의 비교 함수의 사용법을 공부해보자."
 ---
 
 * table of contents

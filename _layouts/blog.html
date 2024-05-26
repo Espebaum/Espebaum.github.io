@@ -17,6 +17,8 @@
 layout: base
 ---
 
+<h1 class="custom-title">MY POSTS</h1>
+
 {% assign plugins = site.plugins | default:site.gems %}
 
 {% if plugins contains 'jekyll-paginate' %}
@@ -24,6 +26,7 @@ layout: base
 {% else %}
   {% assign posts = site.categories[page.slug] | default:site.tags[page.slug] | default:site.posts | limit:5 %}
 {% endif %}
+
 
 {% for post in posts limit:5 %}
   <article id="post{{ post.id | replace:'/','-' }}" class="page post mb6" role="article">
