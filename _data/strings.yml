@@ -23,8 +23,8 @@ social:                Social
 links:                 Links
 links_icon:            'icon-link'
 pagination:            Pagination
-newer:                 Newer
-older:                 Older
+newer:                 "이전으로"
+older:                 "다음으로"
 forward:               Forward
 back:                  Back
 permalink:             Permalink
