@@ -1,13 +1,103 @@
 <div id="_navbar" class="navbar fixed-top">
-  <div class="content">
-    <span class="sr-only">{{ site.data.strings.jump_to | default:"Jump to" }}{{ site.data.strings.colon | default:":" }}</span>
-    <div class="nav-btn-bar">
-      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
-        <span class="sr-only">{{ site.data.strings.navigation | default:"Navigation" }}</span>
-        <span class="icon-menu"></span>
-      </a>
-      <div class="nav-span"></div>
+    <div class="content">
+      <span class="sr-only">{{ site.data.strings.jump_to | default:"Jump to" }}{{ site.data.strings.colon | default:":" }}</span>
+      <div class="nav-btn-bar">
+        <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+          <span class="sr-only">{{ site.data.strings.navigation | default:"Navigation" }}</span>
+          <span class="icon-menu"></span>
+        </a>
+        <button id="_search" class="nav-btn no-hover">
+            <label class="sr-only" for="_search-input">Search</label> 
+            <span class="icon-search"></span> 
+        </button>
+        <div id="_search-box" class="">
+            <div class="nav-btn"> 
+                <span class="icon-search"></span>
+            </div>
+            <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…"> 
+            <button type="reset" class="nav-btn no-hover" id="reset-btn">          
+                <span class="sr-only">Close</span> 
+                <span class="icon-cross"></span> 
+            </button>
+        </div>
+        <div id="_hits" style="display: none;">
+            <ul id="search-results">
+            </ul>
+        </div>
+        <div class="nav-span"></div>
+      </div>
     </div>
   </div>
-</div>
-<hr class="sr-only" hidden />
+  <hr class="sr-only" hidden />
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var searchButton = document.getElementById('_search');
+    var searchBox = document.getElementById('_search-box');
+    var resetButton = document.getElementById('reset-btn');
+    var searchInput = document.getElementById('_search-input');
+    var hitsContainer = document.getElementById('_hits');
+    var searchResults = document.getElementById('search-results');
+    
+    var posts = [
+          { title: "BOJ 2473 - 세 용액", url: "/posts/2473.html", img: "/assets/img/boj/boj2473-01.png" },
+        ];
+
+    searchButton.addEventListener('click', function() {
+      if (searchBox.classList.contains('show')) {
+        searchBox.classList.remove('show');
+        hitsContainer.style.display = 'none';
+      } else {
+        searchBox.classList.add('show');
+      }
+    });
+
+    resetButton.addEventListener('click', function() {
+      searchBox.classList.remove('show');
+      hitsContainer.style.display = 'none';
+      searchResults.innerHTML = '';
+      searchInput.value = '';
+    });
+
+    searchInput.addEventListener('input', function() {
+      var query = searchInput.value.toLowerCase();
+      searchResults.innerHTML = '';
+
+      if (query) {
+        var filteredPosts = posts.filter(function(post) {
+          return post.title.toLowerCase().includes(query);
+        });
+
+        if (filteredPosts.length > 0) {
+          filteredPosts.forEach(function(post) {
+            var li = document.createElement('li');
+            li.className = 'search-item';
+            li.innerHTML = `
+              <div class="search-img aspect-ratio sixteen-ten">
+                <img src="${post.img}" alt="${post.title}" />
+              </div>
+              <div class="search-text">
+                <p>
+                  <a class="heading" tabindex="1" href="${post.url}">${post.title}</a>
+                  <small>${post.url}</small>
+                </p>
+              </div>
+            `;
+            li.addEventListener('click', function() {
+              searchBox.classList.remove('show');
+              hitsContainer.style.display = 'none';
+              searchResults.innerHTML = '';
+              searchInput.value = '';
+            });
+            searchResults.appendChild(li);
+          });
+          hitsContainer.style.display = 'block';
+        } else {
+          hitsContainer.style.display = 'none';
+        }
+      } else {
+        hitsContainer.style.display = 'none';
+      }
+    });
+  });
+</script>
