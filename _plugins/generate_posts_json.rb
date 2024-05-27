@@ -20,8 +20,8 @@ module Jekyll
         end
       end.compact  # `compact`를 사용하여 `nil` 값을 제거
 
-      # `_data` 디렉터리 경로를 동적으로 가져옴
-      output_dir = File.join(site.source, '_data')
+      # 루트 디렉터리 경로를 동적으로 가져옴
+      output_dir = site.source
       output_file = File.join(output_dir, 'posts.json')
 
       # 파일을 쓸 디렉터리가 존재하지 않으면 생성
@@ -32,7 +32,7 @@ module Jekyll
 
       # 파일 삭제 방지
       site.keep_files ||= []
-      site.keep_files << '_data/posts.json'
+      site.keep_files << 'posts.json'
     end
   end
 end
