@@ -345,7 +345,6 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
-  - posts.json
   
 include:
   - .well-known
