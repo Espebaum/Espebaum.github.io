@@ -46,9 +46,9 @@ hy-drawer {
 
   @media screen and (min-width: $break-point-dynamic) {
     // width: calc(50% - #{$half-content});
-    width: calc(50% - #{$half-content});
+    width: 25%;
 
-    --hy-drawer-peek-width: 21rem;
+    --hy-drawer-peek-width: calc(50% - #{$half-content});
     // --hy-drawer-peek-width: 25%;
 
   }

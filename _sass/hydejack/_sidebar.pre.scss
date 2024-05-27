@@ -52,7 +52,7 @@ hy-drawer {
     width: calc(50% - #{$half-content});
 
     // <<< link
-    --hy-drawer-peek-width: 21rem;
+    --hy-drawer-peek-width: calc(50% - #{$half-content});
     // >>>
   }
 
