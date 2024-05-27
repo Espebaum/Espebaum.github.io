@@ -4,6 +4,7 @@ title: "Object Prototypes"
 description: >
     "객체 프로토타입 공부"
 category: javascript
+image: "/assets/img/javascript/javascript.webp"
 ---
 
 * table of contents

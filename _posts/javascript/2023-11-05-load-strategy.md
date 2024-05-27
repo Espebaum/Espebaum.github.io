@@ -4,6 +4,7 @@ title: "async, defer"
 description: >
     "이 코드 왜 안됨"
 category: javascript
+image: "/assets/img/javascript/javascript.webp"
 ---
 
 - 써야함

@@ -81,7 +81,7 @@ legal:
 copyright:             © 2023. All rights reserved.
 
 # Format of the permalinks
-permalink:             none
+permalink:             /:categories/:title
 
 # Pagination configuration (used by the `blog` layout)
 paginate:              5
@@ -345,6 +345,8 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
+  - posts.json
+  
 include:
   - .well-known
   - LICENSE.md

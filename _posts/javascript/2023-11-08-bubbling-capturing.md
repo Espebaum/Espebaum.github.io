@@ -4,6 +4,7 @@ title: "이벤트 버블링과 캡처"
 description: >
     "버블링과 캡처링 설명"
 category: javascript
+image: "/assets/img/javascript/javascript.webp"
 ---
 
 * table of contents

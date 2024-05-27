@@ -5,6 +5,7 @@ description: >
     "ft_lstadd_front, ft_lstsize에 대하여"
 category: 42cursus
 tags: libft
+image: "/assets/img/libft/libft.webp"
 ---
 ## [bonus] ft_lstadd_front & ft_lstsize
 

@@ -5,6 +5,7 @@ description: >
     "ft_lstlast, ft_lstadd_back에 대하여"
 category: 42cursus
 tags: libft
+image: "/assets/img/libft/libft.webp"
 ---
 ## [bonus] ft_lstlast & ft_lstadd_back
 

@@ -4,6 +4,7 @@ title: "함수 호출 연산자"
 description: >
     "함수 호출 연산자"
 category: javascript
+image: "/assets/img/javascript/javascript.webp"
 ---
 
 ## 함수 호출 연산자(function invocation operator)

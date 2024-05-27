@@ -32,72 +32,80 @@
 
   <script>
   document.addEventListener("DOMContentLoaded", function() {
-    var searchButton = document.getElementById('_search');
-    var searchBox = document.getElementById('_search-box');
-    var resetButton = document.getElementById('reset-btn');
-    var searchInput = document.getElementById('_search-input');
-    var hitsContainer = document.getElementById('_hits');
-    var searchResults = document.getElementById('search-results');
-    
-    var posts = [
-          { title: "BOJ 2473 - 세 용액", url: "/posts/2473.html", img: "/assets/img/boj/boj2473-01.png" },
-        ];
+  var searchButton = document.getElementById('_search');
+  var searchBox = document.getElementById('_search-box');
+  var resetButton = document.getElementById('reset-btn');
+  var searchInput = document.getElementById('_search-input');
+  var hitsContainer = document.getElementById('_hits');
+  var searchResults = document.getElementById('search-results');
+  var posts = [];
 
-    searchButton.addEventListener('click', function() {
-      if (searchBox.classList.contains('show')) {
-        searchBox.classList.remove('show');
-        hitsContainer.style.display = 'none';
-      } else {
-        searchBox.classList.add('show');
-      }
-    });
+  // JSON 파일에서 포스트 목록 가져오기
+  fetch('/posts.json')
+    .then(response => response.json())
+    .then(data => {
+      posts = data;
+    })
+    .catch(error => console.error('Error loading posts:', error));
 
-    resetButton.addEventListener('click', function() {
+  searchButton.addEventListener('click', function() {
+    if (searchBox.classList.contains('show')) {
       searchBox.classList.remove('show');
       hitsContainer.style.display = 'none';
-      searchResults.innerHTML = '';
-      searchInput.value = '';
-    });
+    } else {
+      searchBox.classList.add('show');
+    }
+  });
 
-    searchInput.addEventListener('input', function() {
-      var query = searchInput.value.toLowerCase();
-      searchResults.innerHTML = '';
+  resetButton.addEventListener('click', function() {
+    searchBox.classList.remove('show');
+    hitsContainer.style.display = 'none';
+    searchResults.innerHTML = '';
+    searchInput.value = '';
+  });
 
-      if (query) {
-        var filteredPosts = posts.filter(function(post) {
-          return post.title.toLowerCase().includes(query);
-        });
+  searchInput.addEventListener('input', function() {
+    var query = searchInput.value.toLowerCase();
+    searchResults.innerHTML = '';
 
-        if (filteredPosts.length > 0) {
-          filteredPosts.forEach(function(post) {
-            var li = document.createElement('li');
-            li.className = 'search-item';
-            li.innerHTML = `
-              <div class="search-img aspect-ratio sixteen-ten">
-                <img src="${post.img}" alt="${post.title}" />
-              </div>
-              <div class="search-text">
-                <p>
-                  <a class="heading" tabindex="1" href="${post.url}">${post.title}</a>
-                  <small>${post.url}</small>
-                </p>
-              </div>
-            `;
-            li.addEventListener('click', function() {
-              searchBox.classList.remove('show');
-              hitsContainer.style.display = 'none';
-              searchResults.innerHTML = '';
-              searchInput.value = '';
-            });
-            searchResults.appendChild(li);
+    if (query) {
+      var filteredPosts = posts.filter(function(post) {
+        return post.title.toLowerCase().includes(query);
+      });
+
+      if (filteredPosts.length > 0) {
+        filteredPosts.forEach(function(post) {
+          // 이미지가 없는 경우 빈 이미지를 사용
+          var postImage = post.image ? post.image : '';
+
+          var li = document.createElement('li');
+          li.className = 'search-item';
+          li.innerHTML = `
+            <div class="search-img aspect-ratio sixteen-ten">
+              ${postImage ? `<img src="${postImage}" alt="${post.title}" />` : ''}
+            </div>
+            <div class="search-text">
+              <p>
+                <a class="heading" tabindex="1" href="${post.url}">${post.title}</a>
+                <small>${post.url}</small>
+              </p>
+            </div>
+          `;
+          li.addEventListener('click', function() {
+            searchBox.classList.remove('show');
+            hitsContainer.style.display = 'none';
+            searchResults.innerHTML = '';
+            searchInput.value = '';
           });
-          hitsContainer.style.display = 'block';
-        } else {
-          hitsContainer.style.display = 'none';
-        }
+          searchResults.appendChild(li);
+        });
+        hitsContainer.style.display = 'block';
       } else {
         hitsContainer.style.display = 'none';
       }
-    });
+    } else {
+      hitsContainer.style.display = 'none';
+    }
   });
+});
 </script>

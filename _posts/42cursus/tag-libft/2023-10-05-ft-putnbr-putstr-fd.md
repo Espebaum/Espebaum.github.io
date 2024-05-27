@@ -5,6 +5,7 @@ description: >
     "ft_putnbr_fd, ft_putstr_fd에 대하여"
 category: 42cursus
 tags: libft
+image: "/assets/img/libft/libft.webp"
 ---
 ## ft_putnbr_fd & ft_putstr_fd
 

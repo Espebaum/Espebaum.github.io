@@ -5,6 +5,7 @@ description: >
     "ft_tolower, ft_toupper에 대하여"
 category: 42cursus
 tags: libft
+image: "/assets/img/libft/libft.webp"
 ---
 ## ft_tolower & ft_toupper
 

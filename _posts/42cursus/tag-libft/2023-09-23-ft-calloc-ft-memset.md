@@ -5,6 +5,7 @@ description: >
     "ft_calloc, ft_memset에 대하여"
 category: 42cursus
 tags: libft
+image: "/assets/img/libft/libft.webp"
 ---
 ## ft_calloc & ft_memset
 
