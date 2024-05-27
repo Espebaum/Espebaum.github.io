@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var searchResults = document.getElementById('search-results');
     var posts = [];
 
-    fetch('espebaum.github.io/posts.json')
+    fetch('posts.json')
         .then(response => response.json())
         .then(data => {
             posts = data;
