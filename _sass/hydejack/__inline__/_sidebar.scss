@@ -51,8 +51,8 @@ hy-drawer {
   }
 
   @media screen and (min-width: $break-point-dynamic) {
-    // width: calc(50% - #{$half-content});
-    width: 25%;
+    width: calc(50% - #{$half-content});
+    // width: 25%;
 
 
   }
