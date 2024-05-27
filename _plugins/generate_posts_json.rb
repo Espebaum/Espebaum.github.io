@@ -1,4 +1,3 @@
-# _plugins/generate_posts_json.rb
 require 'json'
 require 'fileutils'
 
@@ -20,15 +19,15 @@ module Jekyll
         end
       end.compact  # `compact`를 사용하여 `nil` 값을 제거
 
-      # 루트 디렉터리 경로를 동적으로 가져옴
-      output_dir = site.source
-      output_file = File.join(output_dir, 'posts.json')
+      # 루트 디렉토리 경로를 동적으로 가져옴
+      root_output_file = File.join(site.source, 'posts.json')
+      site_output_file = File.join(site.dest, 'posts.json')
 
-      # 파일을 쓸 디렉터리가 존재하지 않으면 생성
-      FileUtils.mkdir_p(File.dirname(output_file))
+      # 루트 디렉토리에 JSON 파일 생성
+      File.write(root_output_file, JSON.pretty_generate(posts))
 
-      # JSON 파일 생성
-      File.write(output_file, JSON.pretty_generate(posts))
+      # _site 디렉토리에 JSON 파일 생성
+      File.write(site_output_file, JSON.pretty_generate(posts))
 
       # 파일 삭제 방지
       site.keep_files ||= []
