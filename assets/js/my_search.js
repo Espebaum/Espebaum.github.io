@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var searchResults = document.getElementById('search-results');
     var posts = [];
 
-    fetch('/posts.json')
+    fetch('espebaum.github.io/posts.json')
         .then(response => response.json())
         .then(data => {
             posts = data;
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     searchInput.addEventListener('input', function() {
         var query = searchInput.value.toLowerCase();
+        console.log("QUERY", query);
         searchResults.innerHTML = '';
 
         if (query) {
