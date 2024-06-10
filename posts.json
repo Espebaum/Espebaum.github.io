@@ -1174,5 +1174,17 @@
       "random"
     ],
     "image": "/assets/img/boj/boj2473-01.webp"
+  },
+  {
+    "title": "BOJ 25705 - 돌림판 문자열",
+    "url": "/posts/25705",
+    "date": "2024-06-10 00:00:00 +0900",
+    "categories": [
+      "posts"
+    ],
+    "tags": [
+      "random"
+    ],
+    "image": "/assets/img/boj/boj25705-01.webp"
   }
 ]
