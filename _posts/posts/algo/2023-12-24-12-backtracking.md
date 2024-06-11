@@ -4,7 +4,7 @@ title: '백트래킹'
 description: >
     "0x0C강 - 백트래킹"
 category: posts
-tag: algo
+tag: [algo, cpp]
 ---
 
 - table of contents

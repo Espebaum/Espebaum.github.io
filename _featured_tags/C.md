@@ -2,7 +2,7 @@
 layout: tag-list
 type: tag
 title: C
-slug: c
+slug: C
 category: posts
 sidebar: false
 description: >

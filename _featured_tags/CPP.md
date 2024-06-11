@@ -1,8 +1,8 @@
 ---
 layout: tag-list
 type: tag
-title: C++
-slug: c++
+title: CPP
+slug: cpp
 category: posts
 sidebar: false
 description: >
