@@ -183,6 +183,14 @@ std::priority_queue<int, vector<int>, compare()> pq;
 
 - **std::priority_queue의 경우 내부 비교 연산을 위해 함수 객체 혹은 람다 표현식을 사용해야 하며, 함수 포인터를 사용할 수 없다.** 그것은 priority_queue의 내부적인 구조와 관계가 있다. priority_queue의 템플릿 매개변수는 아래와 같다.
 
+~~~c++
+template<
+    class T,
+    class Container = std::vector<T>,
+    class Compare = std::less<typename Container::value_type>
+> class priority_queue;
+~~~
+
 - T는 요소의 타입으로 보통 알고리즘을 풀때는 int로 사용한다. Container의 경우 요소를 저장할 컨테이너로 일반적으로 `vector<int>`를 사용한다. Compare는 요소를 비교할 함수 객체로, 기본적으로는 std::less를 사용하도록 되어있다(less<int>).
 
 - 아까 std::sort의 경우 Compare 부분을 일반적인 타입으로 전달되었었다(`Compare comp`). 그러나 priority_queue는 비교자가 템플릿 매개변수로 전달되기 때문에 컴파일 타임에 비교자의 타입이 확정된다. 따라서 런타임에 확정되는 함수 포인터를 템플릿 인자로 받을 수가 없다.
