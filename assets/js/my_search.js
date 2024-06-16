@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         hitsContainer.style.display = 'none';
                         searchResults.innerHTML = '';
                         searchInput.value = '';
+                        window.location.href = post.url;
                     });
                     searchResults.appendChild(li);
                 });
