@@ -1241,6 +1241,18 @@
     "image": "/assets/img/boj/boj26084-01.webp"
   },
   {
+    "title": "핸즈 온 머신러닝 1장",
+    "url": "/ml/HandsOnML1",
+    "date": "2024-06-23 00:00:00 +0900",
+    "categories": [
+      "ml"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "image": null
+  },
+  {
     "title": "BOJ 13702 - 이상한 술집",
     "url": "/posts/13702",
     "date": "2024-06-23 00:00:00 +0900",
