@@ -1264,5 +1264,17 @@
       "ml"
     ],
     "image": "/assets/img/ml/HandsOnML.webp"
+  },
+  {
+    "title": "단일 샘플에 대한 로지스틱 회귀의 경사하강법 구현",
+    "url": "/ml/LogisticOne",
+    "date": "2024-06-26 00:00:00 +0900",
+    "categories": [
+      "ml"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "image": "/assets/img/ml/NNDL.webp"
   }
 ]
