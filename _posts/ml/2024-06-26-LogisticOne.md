@@ -19,6 +19,8 @@ excerpt: "도함수를 계산하여 단일 샘플에 대한 로지스틱 회귀�
 - Neural Networks and Deep Learning, 
 [Logistic Regression Gradient Descent (C1W2L09)](https://www.youtube.com/watch?v=z_xiwjEdAC4&list=PLpFsSf5Dm-pd5d3rjNtIXUHT-v7bdaEIe&index=15)
 
+- 수식이 이상하게 보인다면 새로고침을 해보면 된다.
+
 ~~유튜브에디션~~
 
 ### 1단계: 파라미터 초기화
