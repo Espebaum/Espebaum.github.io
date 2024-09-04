@@ -1,9 +1,9 @@
 # 나는 gyopark
 
 ## https://espebaum.github.io/
-## 42 seoul Cadet
+## 42 seoul Member
 
-### 타입스크립트 공부, 깃허브 블로그 쓰기
+### 깃허브 블로그 쓰기
 
 <!-- # Hydejack Starter Kit
 
