@@ -1276,5 +1276,17 @@
       "ml"
     ],
     "image": "/assets/img/ml/NNDL.webp"
+  },
+  {
+    "title": "[구글 머신러닝 부트캠프 2024] Gemma Sprint, Gemma2를 파인튜닝 해보자",
+    "url": "/ml/Gemma2FineTuning",
+    "date": "2024-09-16 00:00:00 +0900",
+    "categories": [
+      "ml"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "image": "/assets/img/ml/gemmasprint/huggingface.webp"
   }
 ]
