@@ -97,3 +97,163 @@ notebook_login()
 ### [1 - 4] 데이터셋 로드
 
 - 논문 abstract의 Summary - Original 쌍 Dataset은 aihub의 데이터셋을 사용했다.
+
+<center><img src="/assets/img/ml/gemmasprint/aihub_dataset.webp" width="60%" height="60%"></center><br>
+
+[논문자료 요약](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&dataSetSn=90)
+
+- json 파일을 사용했기 때문에, python에서 json을 로드하여 pandas Dataframe으로 만들고, 본격적으로 파인 튜닝을 진행할 `SFTTrainer`(Supervised Fine-Tuning Trainer)에 매개 변수로 사용할 Dataset으로 만드는 과정을 거쳤다.
+
+```python
+import json
+import pandas
+
+# Json 데이터 로드
+path = '/content/drive/train_paper.json'
+
+with open(path, 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+# 데이터를 담을 리스트 초기화
+documents = []
+
+# 데이터 파싱
+for item in data[0]['data']: # 리스트에 들어있는 객체 파싱
+    doc = {
+        'category': item.get('ipc', ''),
+        'title': item.get('title', ''),
+        'summary': ' '.join([summary['summary_text'] for summary in item.get('summary_entire', [])]),
+        'original': ' '.join([summary['orginal_text'] for summary in item.get('summary_entire', [])])
+    }
+    documents.append(doc)
+```
+
+- documents는 doc 객체를 원소로 하는 Python 리스트이다. 이대로는 사용할 수가 없고, pandas dataframe으로 변환하는 과정을 거쳐야 한다.
+
+```python
+df = pd.DataFrame(documents)
+print(df.shape) # (288174, 4)
+df.head()
+```
+
+<center><img src="/assets/img/ml/gemmasprint/df_head.webp" width="100%" height="100%"></center><br>
+
+```python
+from sklearn.model_selection import train_test_split
+
+train_df, val_df = train_test_split(df, test_size=0.1, random_state=42)
+```
+
+- `sklearn`의 `train_test_split`를 사용하면 dataset을 train set과 validation set으로 분할할 수 있다. 분리된 validation set의 경우, SFTTrainer에서 제공하는 early stopping 콜백 함수를 사용하기 위한 검증 세트로 사용하려고 했으나 Kaggle과 Colab 모두에서 **CUDA 메모리 초과 문제(CUDA OOM)**가 발생해서 실제로 validation set을 활용하지는 못했다. 이 부분 때문에 예상 외의 추가 지출이 발생해서 소극적으로 움직일 수 밖에 없었던 것이 아쉽다. 
+
+- **Hugging Face**에서는 Pandas Dataframe을 SFTTrainer에서 사용할 수 있는 Dataset으로 변환할 수 있는 메서드를 제공한다. [From in-memory data](https://huggingface.co/docs/datasets/v1.2.0/loading_datasets.html#from-in-memory-data)를 참고할 것.
+
+```python
+from datasets import Dataset
+
+# pandas 데이터프레임을 Trainer에서 사용하기 위한 dataset 모양으로 변경
+dataset = Dataset.from_pandas(df)
+
+print(dataset)
+print(dataset[0])
+```
+
+- from_pandas를 통해 반환된 **dataset**은 'category', 'title', 'summary', 'original'의 피쳐를 가진 80000행의 자료구조이다.
+
+- dataset의 원소가 가진 key들 중에서 실제 훈련에 사용된 것은 'summary'와 'original'이다. **summary-original 쌍을 훈련시킴으로써 새로운 summary가 주어졌을 때, original을 생성해내도록 하는 것이 궁극적인 목표이다.**
+
+```md
+# dataset
+Dataset({
+    features: ['category', 'title', 'summary', 'original'],
+    num_rows: 80000
+})
+
+# dataset[0]
+{
+    'category': '인문학', 
+    'title': '중세시대의 對句 학습과 문학 교육', 
+    'summary': '對句의 영역은 다양하고, 그 원리는 짝짓기이다. 
+    하나의 텍스트가 같은 분포도를 보이는 것은 자연스럽다.',
+    'original': '짐작할 수 있는 것처럼, 對句의 영역은 음운, 단어, 어구, 시편의 차원에서 다양하게 이뤄지고 있으며, 그 원리는 짝짓기이다. 
+    하나의 텍스트는 음운으로부터 텍스트 자체까지에 이르는 위계적 양상을 보이므로 對句의 영역 또한 같은 분포도를 보이는 것은 퍽 자연스럽다. 
+    문제는 텍스트의 전 영역에 걸쳐 짝을 만들어야 한다는 강박증이다. 왜 한시학은 짝짓기에 집착하는가?'
+}
+```
+
+### [1 - 5] Hugging Face Login 및 Model Load
+
+```python
+from huggingface_hub import notebook_login
+
+notebook_login()
+```
+
+```python
+BASE_MODEL = "google/gemma-2b-it" 
+# huggingface로부터 gemma-2b-it 모델을 받아옴
+
+model = AutoModelForCausalLM.from_pretrained(BASE_MODEL)
+tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+```
+
+- Hugging Face에 계정에 모델에 접근할 수 있는 Access Token을 발행해두고, notebook_login을 통해 로그인에 성공했다면, 위 라인을 통해 편리하게 `gemma-2b-it` 모델을 빠르게 로드해올 수 있다. 
+
+- `AutoModelForCausalLM`과 `AutoTokenizer`는 Hugging Face의 `transformers` 라이브러리에서 제공하는 모델 및 토크나이저 선택을 위한 클래스이다. 매개 변수로 지정한 모델과 해당하는 토크나이저를 자동으로 선택하게 된다.
+
+## (2) 모델 사용해보기
+
+- Hugging Face에서 제공하는 Gemma2의 Model Card에, prompt를 어떻게 작성해야 하는지에 대한 정보가 담겨 있다.
+
+```python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import transformers
+import torch
+
+model_id = "google/gemma-2-2b-it"
+dtype = torch.bfloat16
+
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(
+    model_id,
+    device_map="cuda",
+    torch_dtype=dtype,)
+
+# chat prompt
+
+chat = [
+    { 
+        "role": "user", 
+        "content": "Write a hello world program" 
+    },
+]
+
+prompt = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)
+```
+> At this point, the prompt contains the following text:
+
+```md
+<bos><start_of_turn>user
+Write a hello world program<end_of_turn>
+<start_of_turn>model
+```
+
+- model과 tokenizer를 받아오는 부분은 동일하고, 주목해야할 부분이 role, content를 키로 가지는 객체를 포함한 chat 리스트와 prompt이다.
+
+- `apply_chat_template`는 huggingface에서 제공하는 메서드로, chat의 리스트를 tokenzier가 사용하는 형태로 바꿔준다. gemma2가 아니라 다른 모델을 사용한다면 다른 형태로 파싱이 된다. [How do I use chat templates?](https://huggingface.co/docs/transformers/main/en/chat_templating#how-do-i-use-chat-templates) 참고
+
+- 예를 들어 내가 사용했던 데이터를 prompt로 만들면
+
+```python
+doc = dataset[2]['summary']
+doc
+```
+```
+'코스닥시장에서 가격제한폭 변화가 이루어진 1998. 5. 25의 경우를 대상으로 검증한 결과, 
+관측변동성의 경우는 기간 B에서 변동성의 변화가 유의하지 않은 것으로 나타났고 기본적 변동성의 경우에는 
+기간 B에서 유의하게 증가한 것으로 나타났으며 
+일시적 변동성의 경우에는 변화가 유의하지 않은 것으로 나타났다.'
+```
+
+
+
