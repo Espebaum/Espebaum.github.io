@@ -83,7 +83,7 @@ from peft import LoraConfig, PeftModel, get_peft_model
 from trl import SFTTrainer
 ```
 
-### [1 - 3] HuggingFace 로그인
+### [1 - 3] HuggingFace Login
 
 ```python
 from huggingface_hub import notebook_login
@@ -183,6 +183,8 @@ Dataset({
 
 ### [1 - 5] Hugging Face Login 및 Model Load
 
+- 위에서 로그인을 마쳤다면 다시 할 필요는 없다.
+
 ```python
 from huggingface_hub import notebook_login
 
@@ -204,6 +206,8 @@ tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
 ## (2) 모델 사용해보기
 
 ### [2 - 1] Gemma-2b-it 모델에 예시 질문하기
+
+[google/gemma-2-2b-it](https://huggingface.co/google/gemma-2-2b-it)
 
 - Hugging Face에서 제공하는 Gemma2의 Model Card에, prompt를 어떻게 작성해야 하는지에 대한 정보가 담겨 있다.
 
