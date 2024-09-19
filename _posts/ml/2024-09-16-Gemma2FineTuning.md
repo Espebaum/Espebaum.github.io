@@ -269,6 +269,8 @@ outputs = pipe(
     # top_p=0.95,             # 확률 분포에서 상위 95%에 해당하는 단어들만 선택되도록 설정
     add_special_tokens=True # 모델이 특별 토큰을 처리할 수 있도록 설정
 )
+
+outputs[0]["generated_text"][len(prompt):] # print output
 ```
 - pipe의 매개변수는 자유롭게 조정할 수 있을 것 같다.
 
