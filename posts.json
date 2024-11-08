@@ -1254,30 +1254,6 @@
     "image": "/assets/img/boj/boj13702-01.webp"
   },
   {
-    "title": "핸즈 온 머신러닝",
-    "url": "/ml/HandsOnML1",
-    "date": "2024-06-25 00:00:00 +0900",
-    "categories": [
-      "ml"
-    ],
-    "tags": [
-      "ml"
-    ],
-    "image": "/assets/img/ml/HandsOnML.webp"
-  },
-  {
-    "title": "단일 샘플에 대한 로지스틱 회귀의 경사하강법 구현",
-    "url": "/ml/LogisticOne",
-    "date": "2024-06-26 00:00:00 +0900",
-    "categories": [
-      "ml"
-    ],
-    "tags": [
-      "ml"
-    ],
-    "image": "/assets/img/ml/NNDL.webp"
-  },
-  {
     "title": "[구글 머신러닝 부트캠프 2024] Gemma Sprint, Gemma2를 파인튜닝 해보자",
     "url": "/ml/Gemma2FineTuning",
     "date": "2024-09-16 00:00:00 +0900",
@@ -1291,7 +1267,7 @@
   },
   {
     "title": "[구글 머신러닝 부트캠프 2024] 참여 후기",
-    "url": "/ml/googlemlb",
+    "url": "/ml/GoogleMlb",
     "date": "2024-10-03 00:00:00 +0900",
     "categories": [
       "ml"
@@ -1300,5 +1276,17 @@
       "ml"
     ],
     "image": "/assets/img/ml/mlb/mlb_banner.webp"
+  },
+  {
+    "title": "[구글 머신러닝 부트캠프 2024] NIPA-Google ML 부트캠프 협력 실무 프로젝트(4기) 참여 후기",
+    "url": "/ml/GoogleNipa",
+    "date": "2024-11-08 00:00:00 +0900",
+    "categories": [
+      "ml"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "image": "/assets/img/ml/mlb/nipa.webp"
   }
 ]
