@@ -53,7 +53,7 @@ excerpt: ".."
 
 - 이번 경험을 통해 결국 **프로젝트를 진행할 때는 좋은 주제를 선정하고, 일정을 가능한 구체적으로 미리 계획해놓는 것이 정말 중요하다**는 것을 절감했다. 다른 팀들도 들어간 기술이나 프레젠테이션 수준이 결코 우리 팀에 뒤지지 않는다고 생각했지만 우리 팀의 주제가 정말 참신한데다가 결과물도 나쁘지 않고, 사전에 계획을 잘 짜놓아서 여유롭게 일정을 마무리한 덕에 프레젠테이션의 퀄리티 향상에 시간을 많이 쏟을 수 있었던 것이 1등을 가져갈 수 있었던 비결이었다고 생각한다. 
 
-<br><center><img src="/assets/img/ml/mlb/slimeCVAE.webp" width="40%" height="40%"></center><br>
+<br><center><img src="/assets/img/ml/mlb/slimeCVAE.webp" width="100%" height="100%"></center><br>
 
 <center><span style="color:#808080">내가 계획했던 CVAE의 개략적인 구조도, 결과적으로는 실패했지만 좋은 경험이었다.</span></center><br>
 
