@@ -1267,7 +1267,7 @@
   },
   {
     "title": "[구글 머신러닝 부트캠프 2024] 참여 후기",
-    "url": "/ml/GoogleMlb",
+    "url": "/ml/googlemlb",
     "date": "2024-10-03 00:00:00 +0900",
     "categories": [
       "ml"
@@ -1288,5 +1288,17 @@
       "ml"
     ],
     "image": "/assets/img/ml/mlb/prize1.webp"
+  },
+  {
+    "title": "[구글 머신러닝 부트캠프 2024] 빅테크 기업 해커톤 참여 후기",
+    "url": "/ml/GoogleHack",
+    "date": "2024-12-11 00:00:00 +0900",
+    "categories": [
+      "ml"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "image": "/assets/img/ml/ghack/prize.webp"
   }
 ]
