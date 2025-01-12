@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Build text-to-speech from scratch'
+title: 'Build text-to-speech from scratch로 공부'
 category: ml
 tags: [ml]
 date: 2025-01-12
@@ -12,9 +12,9 @@ excerpt: ".."
 - table of contents
 {:toc}
 
-# Build text-to-speech from scratch
+### Build text-to-speech from scratch
 
-## [Build text-to-speech from scratch](https://medium.com/@tttzof351/build-text-to-speech-from-scratch-part-1-ba8b313a504f)
+- [Build text-to-speech from scratch](https://medium.com/@tttzof351/build-text-to-speech-from-scratch-part-1-ba8b313a504f)
 
 ## Text Transformation
 
