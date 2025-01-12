@@ -85,7 +85,7 @@ _ = plt.ylabel("Amplitude")
 
 - 신호의 파형을 나타내는 그래프, 가로축 Time과 세로축 Amplitude로 구성되어 있다. 시간 영역에서 분석된 결과로 이해할 수 있다.
 
-<img src="./scratch/waveform.jpg">
+<center><img src="/assets/img/ml/scratch/waveform.webp" width="100%" height="100%"></center><br>
 
 ### 단시간 푸리에 변환
 
@@ -123,7 +123,7 @@ STFT를 수행하면 시간에 따라 변화하는 주파수 성분(예: 음절,
 
 - STFT 개괄
 
-<img src="/assets/img/ml/scratch/STFT.jpg">
+<center><img src="/assets/img/ml/scratch/STFT.webp" width="100%" height="100%"></center><br>
 
 ### MEL Scale
 
@@ -135,11 +135,11 @@ STFT를 수행하면 시간에 따라 변화하는 주파수 성분(예: 음절,
 
 ## Audio Transformations Code
 
-- (torchaudio.transforms.Spectrogram)[https://pytorch.org/audio/stable/generated/torchaudio.transforms.Spectrogram.html#torchaudio.transforms.Spectrogram] -> wrap around STFT
+- [torchaudio.transforms.Spectrogram](https://pytorch.org/audio/stable/generated/torchaudio.transforms.Spectrogram.html#torchaudio.transforms.Spectrogram) -> wrap around STFT
 
-- (torchaudio.transforms.MelScale)[https://pytorch.org/audio/stable/generated/torchaudio.transforms.MelScale.html#torchaudio.transforms.MelScale] -> convert normal STFT into a mel frequency STFT
+- [torchaudio.transforms.MelScale](https://pytorch.org/audio/stable/generated/torchaudio.transforms.MelScale.html#torchaudio.transforms.MelScale) -> convert normal STFT into a mel frequency STFT
 
-<img src="/assets/img/ml/scratch/diagram.webp">
+<center><img src="/assets/img/ml/scratch/diagram.webp" width="100%" height="100%"></center><br>
 
 - 가이드에서는 전처리 과정을 빨간색 화살표로, 추론 과정은 파란색 화살표로 나타내었다.
 
@@ -181,7 +181,7 @@ _ = ax1.set_ylabel("Frequency")
 
 ```
 
-<img src="/assets/img/ml/scratch/spectrogram-power.webp">
+<center><img src="/assets/img/ml/scratch/spectrogram-power.webp" width="60%" height="60%"></center><br>
 
 - 데이터가 눈에 잘 보이지 않는다. 그래프가 이런 식이면 학습할 때 각 데이터의 특징이 잘 반영되지 않을 것이다. 게다가, 낮은 주파수 이외의 거의 대부분의 영역이 비어있다는 것을 확인할 수 있다.
 
@@ -221,7 +221,7 @@ _ = ax1.set_xlabel("Time")
 _ = ax1.set_ylabel("Frequency")
 ```
 
-<img src="/assets/img/ml/scratch/melspectrogram.webp">
+<center><img src="/assets/img/ml/scratch/melspectrogram.webp" width="100%" height="100%"></center><br>
 
 - 차원을 줄였지만, 여전히 가시성이 떨어진다. 주파수 간의 차이가 크지 않기 때문인데, 좀더 확인하기 쉽게 만들기 위해 데시벨로의 전환이 필요하다.
 
@@ -265,7 +265,7 @@ _ = ax1.set_xlabel("Time")
 _ = ax1.set_ylabel("Frequency")
 ```
 
-<img src="/assets/img/ml/scratch/melspectrogram-db.webp">
+<center><img src="/assets/img/ml/scratch/melspectrogram-db.webp" width="100%" height="100%"></center><br>
 
 #### 최종적으로 ...
 
@@ -360,7 +360,7 @@ class TextMelDataset(torch.utils.data.Dataset):
     ...
 ```
 
-<img src="/assets/img/ml/scratch/padding.webp">
+<center><img src="/assets/img/ml/scratch/padding.webp" width="60%" height="60%"></center><br>
 
 - 문장의 길이가 제각각일텐데, 여러 문장을 하나의 배치로 진행하기 위해서는 오디오의 길이를 조정해 줄 필요가 있다. `text_max_length`를 정하고 텍스트의 길이가 max_length보다 길다면 자르고, 짧으면 패딩을 해줘야 한다.
 
@@ -518,11 +518,11 @@ tensor([0., 0., 0., ..., 1., 1., 1.])
 
 - 훈련 과정에서, 모델의 추가적인 목표로 포함된다. 오디오 신호와 함께 스탑 토큰을 생성하도록 학습하며, 실제 값과 예측 값 간의 차이를 줄이도록 설계된다.
 
-<img src="/assets/img/ml/scratch/stop-token.webp">
+<center><img src="/assets/img/ml/scratch/stop-token.webp" width="100%" height="100%"></center><br>
 
 ## 모델
 
-<img src="/assets/img/ml/scratch/Model.webp">
+<center><img src="/assets/img/ml/scratch/Model.webp" width="60%" height="60%"></center><br>
 
 - 트랜스포머 구조를 사용한 모델의 구조인데, 나는 간단한 GRU만을 사용했기 때문에 추가적인 공부가 필요하다.
 
