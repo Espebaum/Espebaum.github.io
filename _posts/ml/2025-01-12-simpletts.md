@@ -4,7 +4,7 @@ title: 'Build text-to-speech from scratch'
 category: ml
 tags: [ml]
 date: 2025-01-12
-image: "/assets/img/ml/ghack/prize.webp"
+image: "/assets/img/ml/scratch/thumbnail.webp"
 message: ".."
 excerpt: ".."
 ---
